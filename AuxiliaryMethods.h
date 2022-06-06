@@ -1,5 +1,5 @@
 #ifndef AUXILIARYMETHODS_H
-#define AUXILIARYALMETHODS_H
+#define AUXILIARYMETHODS_H
 
 #include <iostream>
 #include <sstream>
@@ -13,6 +13,7 @@ class AuxiliaryMethods
 
 public:
     static char loadCharacter();
+    static string changeFirstLetterToCapitalAndOtherToLowercase(string text);
 
 };
 

@@ -11,7 +11,7 @@ using namespace std;
 class PersonalBudget
 {
 
-    //UserManager userManager;
+    UserManager userManager;
 
     //const FILE_NAME_WITH_USERS;
 
@@ -23,8 +23,8 @@ public:
 
 
     char selectOptionFromMainMenu();
-    //void userRegistration();
-    // void showAllUsers();
+    void registerUser();
+    void displayAllUsers();
     //bool ifUserIsLogged();
     //int userLogIn();
 

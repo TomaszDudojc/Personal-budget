@@ -15,10 +15,10 @@ int main()
         //{
             choice = personalBudget.selectOptionFromMainMenu();
 
-            switch (choice)
+  switch (choice)
             {
             case '1':
-                //personalBudget.registerUser();
+                personalBudget.registerUser();
                 break;
             case '2':
                 //loggedInUserId = personalBudget.loginUser();
@@ -28,7 +28,7 @@ int main()
                 exit(0);
                 break;
             }
-        //}
+       //}
         /*else
         //{
             choice = personalBudget.selectOptionFromUserMenu();
@@ -63,6 +63,8 @@ int main()
             }
         }
     }*/
-    //personalBudget.showAllUsers();
+
+
+    personalBudget.displayAllUsers();
     return 0;
 }
