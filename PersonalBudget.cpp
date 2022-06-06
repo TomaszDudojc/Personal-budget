@@ -1,7 +1,7 @@
 #include "PersonalBudget.h"
 #include "AuxiliaryMethods.h"
 
-char PersonalBudget ::selectOptionFromMainMenu()
+char PersonalBudget::selectOptionFromMainMenu()
 {
     char choice;
 
@@ -17,3 +17,13 @@ char PersonalBudget ::selectOptionFromMainMenu()
 
     return choice;
 }
+
+void PersonalBudget::registerUser()
+{
+    userManager.registerUser();
+}
+
+ void PersonalBudget::displayAllUsers()
+ {
+    userManager.displayAllUsers();
+ }

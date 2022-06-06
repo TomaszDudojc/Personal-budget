@@ -1,0 +1,42 @@
+#ifndef USERMANAGER_H
+#define USERMANAGER_H
+
+#include <iostream>
+#include <vector>
+
+#include "User.h"
+#include "AuxiliaryMethods.h"
+
+using namespace std;
+
+class UserManager
+{
+    int loggedInUserId;
+    vector<User>users;
+
+    User getNewUserData();
+    int getNewUserId();
+    bool loginExists(string login);
+    //FileWithUsers fileWithUsers;
+
+public:
+    //UserManager(string nazwaPlikuZUzytkownikami): plikZUzytkownikami(nazwaPlikuZUzytkownikami)
+    UserManager()
+    {
+        loggedInUserId = 0;
+        //users = fileWithUsers.loadUsersFromFile ();
+    };//konstruktor
+    void registerUser();
+    void displayAllUsers();
+    //int loginUser();
+    //bool isUserLoggedIn();
+   //void changePassword();
+    //void addUserToFile();
+    //void logoutUser();
+
+
+
+};
+
+
+#endif
