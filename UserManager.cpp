@@ -57,14 +57,13 @@ void UserManager::displayAllUsers()
 {
     for (int i=0; i<users.size(); i++)
     {
-        cout<<users[i].getUserId()<<"| ";
-        cout<<users[i].getUserName()<<"| ";
-        cout<<users[i].getUserSurname()<<"| ";
-        cout<<users[i].getLogin()<<"| ";
-        cout<<users[i].getPassword()<<endl;
+        cout<<"User ID: "<<users[i].getUserId();
+        cout<<"|Name: "<<users[i].getUserName();
+        cout<<"|Surname: "<<users[i].getUserSurname();
+        cout<<"|Login: "<<users[i].getLogin();
+        cout<<"|Password: "<<users[i].getPassword()<<endl;
     }
 }
-
 bool UserManager::loginExists(string login)
 {
     for (int i=0; i<users.size(); i++)
