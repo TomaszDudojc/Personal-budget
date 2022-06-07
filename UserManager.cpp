@@ -4,7 +4,7 @@ void UserManager::registerUser()
 {
     User user = getNewUserData();
     users.push_back(user);
-    //plikZUzytkownikami.dopiszUzytkownikaDoPliku(uzytkownik);
+    fileWithUsers.addUserToFile(user);
 
     cout << endl << "Account has been successfully created" << endl << endl;
     system("pause");
@@ -57,10 +57,10 @@ void UserManager::displayAllUsers()
 {
     for (int i=0; i<users.size(); i++)
     {
-        cout<<users[i].getUserId()<<endl;
-        cout<<users[i].getUserName()<<endl;
-        cout<<users[i].getUserSurname()<<endl;
-        cout<<users[i].getLogin()<<endl;
+        cout<<users[i].getUserId()<<"| ";
+        cout<<users[i].getUserName()<<"| ";
+        cout<<users[i].getUserSurname()<<"| ";
+        cout<<users[i].getLogin()<<"| ";
         cout<<users[i].getPassword()<<endl;
     }
 }

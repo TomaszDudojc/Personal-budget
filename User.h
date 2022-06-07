@@ -8,32 +8,32 @@ using namespace std;
 class User
 {
     int userId;
-    string login;
-    string password;
     string userName;
     string userSurname;
+    string login;
+    string password;
 
 public:
-    User(int userId=0, string login="", string password="", string userName="", string userSurname="")
+    User(int userId=0,string userName="", string userSurname="", string login="", string password="")
     {
         this->userId=userId;
-        this->login= login;
-        this->password=password;
         this->userName=userName;
         this->userSurname=userSurname;
+        this->login= login;
+        this->password=password;
     }
 
     void setupUserId(int newUserId);
-    void setupLogin(string newLogin);
-    void setupPassword(string newPassword);
     void setupUserName(string newUserName);
     void setupUserSurname(string newUserSurname);
+    void setupLogin(string newLogin);
+    void setupPassword(string newPassword);
 
     int getUserId();
-    string getLogin();
-    string getPassword();
     string getUserName();
     string getUserSurname();
+    string getLogin();
+    string getPassword();
 };
 
 #endif

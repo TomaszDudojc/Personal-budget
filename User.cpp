@@ -6,16 +6,6 @@ void User::setupUserId(int newUserId)
         userId=newUserId;
 }
 
-void User::setupLogin(string newLogin)
-{
-    login=newLogin;
-}
-
-void User::setupPassword(string newPassword)
-{
-    password=newPassword;
-}
-
 void User::setupUserName(string newUserName)
 {
     userName=newUserName;
@@ -26,9 +16,29 @@ void User::setupUserSurname(string newUserSurname)
     userSurname=newUserSurname;
 }
 
+void User::setupLogin(string newLogin)
+{
+    login=newLogin;
+}
+
+void User::setupPassword(string newPassword)
+{
+    password=newPassword;
+}
+
 int User::getUserId()
 {
     return userId;
+}
+
+string User :: getUserName()
+{
+    return userName;
+}
+
+string User :: getUserSurname()
+{
+    return userSurname;
 }
 
 string User :: getLogin()
@@ -41,12 +51,4 @@ string User::getPassword()
     return password;
 }
 
-string User :: getUserName()
-{
-    return userName;
-}
 
-string User :: getUserSurname()
-{
-    return userSurname;
-}

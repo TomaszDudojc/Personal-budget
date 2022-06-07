@@ -5,7 +5,7 @@ using namespace std;
 
 int main()
 {
-    PersonalBudget personalBudget;
+    PersonalBudget personalBudget("Users.xml");
     char choice = 0;
     int loggedInUserId = 0;
 

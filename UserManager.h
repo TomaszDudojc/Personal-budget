@@ -6,6 +6,7 @@
 
 #include "User.h"
 #include "AuxiliaryMethods.h"
+#include "FileWithUsers.h"
 
 using namespace std;
 
@@ -17,11 +18,11 @@ class UserManager
     User getNewUserData();
     int getNewUserId();
     bool loginExists(string login);
-    //FileWithUsers fileWithUsers;
+    FileWithUsers fileWithUsers;
 
 public:
-    //UserManager(string nazwaPlikuZUzytkownikami): plikZUzytkownikami(nazwaPlikuZUzytkownikami)
-    UserManager()
+    UserManager(string fileNameWithUsers): fileWithUsers(fileNameWithUsers)
+    //UserManager()
     {
         loggedInUserId = 0;
         //users = fileWithUsers.loadUsersFromFile ();
@@ -31,7 +32,7 @@ public:
     //int loginUser();
     //bool isUserLoggedIn();
    //void changePassword();
-    //void addUserToFile();
+    void addUserToFile();
     //void logoutUser();
 
 
