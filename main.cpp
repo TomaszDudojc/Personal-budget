@@ -29,8 +29,8 @@ int main()
                 break;
             }
        }
-        /*else
-        //{
+        else
+        {
             choice = personalBudget.selectOptionFromUserMenu();
             switch (choice)
             {
@@ -53,15 +53,15 @@ int main()
                 //personalBudget.changePassword();
                 break;
             case '7':
-                personalBudget.logOutUser();
+                personalBudget.logoutUser();
                 //transaction.clear();
                 break;
             default:
-                cout << endl << "Nie ma takiej opcji w menu." << endl << endl;
+                cout << endl << "There is no such option on the menu." << endl << endl;
                 system("pause");
                 break;
             }
-        }*/
+        }
     }
 
 

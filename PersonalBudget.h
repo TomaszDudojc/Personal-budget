@@ -25,6 +25,8 @@ class PersonalBudget
    //void changePassword();
     void logoutUser();
 
+    char selectOptionFromUserMenu();
+
 
 };
 
