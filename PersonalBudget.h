@@ -19,8 +19,12 @@ class PersonalBudget
     char selectOptionFromMainMenu();
     void registerUser();
     void displayAllUsers();
-    //bool ifUserIsLogged();
-    //int userLogIn();
+    void addUserToFile();
+    int loginUser();
+    bool isUserLoggedIn();
+   //void changePassword();
+    void logoutUser();
+
 
 };
 

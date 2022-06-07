@@ -9,10 +9,10 @@ int main()
     char choice = 0;
     int loggedInUserId = 0;
 
-    //while (true)
-    //{
-        //if (personalBudget.ifUserIsLogged() == false)
-        //{
+    while (true)
+    {
+        if (personalBudget.isUserLoggedIn() == false)
+        {
             choice = personalBudget.selectOptionFromMainMenu();
 
   switch (choice)
@@ -22,13 +22,13 @@ int main()
                 break;
             case '2':
                 //loggedInUserId = personalBudget.loginUser();
-                //personalBudget.loginUser();
+                personalBudget.loginUser();
                 break;
             case '9':
                 exit(0);
                 break;
             }
-       //}
+       }
         /*else
         //{
             choice = personalBudget.selectOptionFromUserMenu();
@@ -61,8 +61,8 @@ int main()
                 system("pause");
                 break;
             }
-        }
-    }*/
+        }*/
+    }
 
 
     personalBudget.displayAllUsers();

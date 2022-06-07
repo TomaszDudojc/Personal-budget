@@ -28,11 +28,11 @@ public:
     };//konstruktor
     void registerUser();
     void displayAllUsers();
-    //int loginUser();
-    //bool isUserLoggedIn();
+    int loginUser();
+    bool isUserLoggedIn();
    //void changePassword();
     void addUserToFile();
-    //void logoutUser();
+    void logoutUser();
 
 };
 

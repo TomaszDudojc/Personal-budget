@@ -14,6 +14,7 @@ class AuxiliaryMethods
 public:
     static char loadCharacter();
     static string changeFirstLetterToCapitalAndOtherToLowercase(string text);
+    static string loadLine();
 
 };
 
