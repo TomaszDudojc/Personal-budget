@@ -29,3 +29,10 @@ string AuxiliaryMethods::changeFirstLetterToCapitalAndOtherToLowercase(string te
     }
     return text;
 }
+
+string AuxiliaryMethods::loadLine()
+{
+    string enrtrance = "";
+    getline(cin, enrtrance);
+    return enrtrance;
+}

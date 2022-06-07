@@ -16,17 +16,17 @@ User UserManager::getNewUserData()
 
     user.setupUserId(getNewUserId());
 
-    string userName;
+    string name;
     cout << "Enter name: ";
-    cin >> userName;
-    userName = AuxiliaryMethods :: changeFirstLetterToCapitalAndOtherToLowercase(userName);
-    user.setupUserName(userName);
+    cin >> name;
+    name = AuxiliaryMethods :: changeFirstLetterToCapitalAndOtherToLowercase(name);
+    user.setupName(name);
 
-    string userSurname;
+    string surname;
     cout << "Enter surname: ";
-    cin >> userSurname;
-    userSurname = AuxiliaryMethods :: changeFirstLetterToCapitalAndOtherToLowercase(userSurname);
-    user.setupUserSurname(userSurname);
+    cin >> surname;
+    surname = AuxiliaryMethods :: changeFirstLetterToCapitalAndOtherToLowercase(surname);
+    user.setupSurname(surname);
 
     string login;
     do
@@ -58,8 +58,8 @@ void UserManager::displayAllUsers()
     for (int i=0; i<users.size(); i++)
     {
         cout<<"User ID: "<<users[i].getUserId();
-        cout<<"|Name: "<<users[i].getUserName();
-        cout<<"|Surname: "<<users[i].getUserSurname();
+        cout<<"|Name: "<<users[i].getName();
+        cout<<"|Surname: "<<users[i].getSurname();
         cout<<"|Login: "<<users[i].getLogin();
         cout<<"|Password: "<<users[i].getPassword()<<endl;
     }
@@ -76,3 +76,59 @@ bool UserManager::loginExists(string login)
     }
     return false;
 }
+
+int UserManager::loginUser()
+{
+    User user;
+    string login = "", password = "";
+
+    cout << endl << "Enter login: ";
+    login = AuxiliaryMethods::loadLine();
+
+    vector <User>::iterator itr = users.begin();
+    while (itr != users.end())
+    {
+        if (itr -> getLogin() == login)
+        {
+            for (int numberOfAttempts = 3; numberOfAttempts > 0; numberOfAttempts--)
+            {
+                cout << "Enter the password. Attempts left: " << numberOfAttempts << ": ";
+                password = AuxiliaryMethods::loadLine();
+
+                if (itr -> getPassword() == password)
+                {
+                    cout << endl << "You logged in." << endl << endl;
+                    system("pause");
+                    loggedInUserId = itr -> getUserId();
+                    return loggedInUserId;
+                }
+            }
+            cout << "Wrong password entered 3 times." << endl;
+            system("pause");
+            return 0;
+        }
+        itr++;
+    }
+    cout << "There is no user with this login." << endl << endl;
+    system("pause");
+    return 0;
+}
+
+bool UserManager::isUserLoggedIn()
+{
+    if (loggedInUserId>0)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+void UserManager::logoutUser()
+{
+    loggedInUserId=0;
+}
+
+

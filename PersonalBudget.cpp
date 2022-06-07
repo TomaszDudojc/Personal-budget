@@ -27,3 +27,19 @@ void PersonalBudget::registerUser()
  {
     userManager.displayAllUsers();
  }
+
+int PersonalBudget::loginUser()
+{
+    userManager.loginUser();
+}
+
+bool PersonalBudget::isUserLoggedIn()
+{
+    userManager.isUserLoggedIn();
+}
+
+void PersonalBudget::logoutUser()
+{
+    userManager.logoutUser();
+}
+
