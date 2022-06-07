@@ -22,10 +22,9 @@ class UserManager
 
 public:
     UserManager(string fileNameWithUsers): fileWithUsers(fileNameWithUsers)
-    //UserManager()
-    {
+     {
         loggedInUserId = 0;
-        //users = fileWithUsers.loadUsersFromFile ();
+        users = fileWithUsers.loadUsersFromFile ();
     };//konstruktor
     void registerUser();
     void displayAllUsers();
@@ -34,8 +33,6 @@ public:
    //void changePassword();
     void addUserToFile();
     //void logoutUser();
-
-
 
 };
 
