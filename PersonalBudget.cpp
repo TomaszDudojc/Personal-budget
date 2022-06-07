@@ -43,3 +43,7 @@ void PersonalBudget::logoutUser()
     userManager.logoutUser();
 }
 
+char PersonalBudget::selectOptionFromUserMenu()
+{
+    userManager.selectOptionFromUserMenu();
+}

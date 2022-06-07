@@ -34,6 +34,8 @@ public:
     void addUserToFile();
     void logoutUser();
 
+    char selectOptionFromUserMenu();
+
 };
 
 

@@ -131,4 +131,24 @@ void UserManager::logoutUser()
     loggedInUserId=0;
 }
 
+char UserManager::selectOptionFromUserMenu()
+{
+    char choice;
 
+    system("cls");
+    cout << " >>> USER MENU <<<" << endl;
+    cout << "---------------------------" << endl;
+    cout << "1. Add income" << endl;
+    cout << "2. Add expense" << endl;
+    cout << "3. Display balance for current month" << endl;
+    cout << "4. Display balance for previous month" << endl;
+    cout << "5. Display balance for selected period" << endl;
+    cout << "---------------------------" << endl;
+    cout << "6. Change password" << endl;
+    cout << "7. Log out" << endl;
+    cout << "---------------------------" << endl;
+    cout << "Your choice: ";
+    choice = AuxiliaryMethods::loadCharacter();
+
+    return choice;
+}
