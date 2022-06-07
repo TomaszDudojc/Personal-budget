@@ -13,14 +13,8 @@ class PersonalBudget
 
     UserManager userManager;
 
-    //const FILE_NAME_WITH_USERS;
-
-
-public:
-    //PersonalBudget(string fileNameWithUsers)
-       // : userMenager(fileNameWithUsers)
-    //{    }
-
+   public:
+    PersonalBudget(string fileNameWithUsers): userManager(fileNameWithUsers){}
 
     char selectOptionFromMainMenu();
     void registerUser();
