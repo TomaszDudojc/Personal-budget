@@ -22,7 +22,7 @@ class PersonalBudget
     void addUserToFile();
     int loginUser();
     bool isUserLoggedIn();
-   //void changePassword();
+   void changePassword();
     void logoutUser();
 
     char selectOptionFromUserMenu();

@@ -61,7 +61,7 @@ void UserManager::displayAllUsers()
         cout<<"|Name: "<<users[i].getName();
         cout<<"|Surname: "<<users[i].getSurname();
         cout<<"|Login: "<<users[i].getLogin();
-        cout<<"|Password: "<<users[i].getPassword()<<endl;
+        cout<<"|Password: "<<users[i].getPassword()<<endl;system("pause");//potem usun¹æ system pauze!!!!!!
     }
 }
 bool UserManager::loginExists(string login)
@@ -152,3 +152,33 @@ char UserManager::selectOptionFromUserMenu()
 
     return choice;
 }
+
+void UserManager::changePassword()
+{
+    string newPassword = "";
+    cout << "Enter new password: ";
+    newPassword = AuxiliaryMethods::loadLine();
+
+    for (vector <User>::iterator itr = users.begin(); itr != users.end(); itr++)
+    {
+        if (itr -> getUserId() == loggedInUserId)
+        {
+            itr -> setupPassword(newPassword);
+            cout << "Password has been changed." << endl << endl;
+            system("pause");
+        }
+    }
+    //addNewPasswordToFile();
+}
+/*
+void UserManager::addNewPasswordToFile()
+{
+    fileWithUsers.addNewPasswordToFile(users, loggedInUserId);
+}
+*/
+/*
+int UserManager::getLoggedInUserId()
+{
+    return loggedInUserId;
+}*/
+

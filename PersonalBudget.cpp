@@ -47,3 +47,8 @@ char PersonalBudget::selectOptionFromUserMenu()
 {
     userManager.selectOptionFromUserMenu();
 }
+
+void PersonalBudget::changePassword()
+{
+    userManager.changePassword();
+}
