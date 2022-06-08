@@ -50,7 +50,8 @@ int main()
                 //personalBudget.displayBalanceForSelectedPeriod();
                 break;
             case '6':
-                //personalBudget.changePassword();
+                personalBudget.changePassword();
+                personalBudget.displayAllUsers();
                 break;
             case '7':
                 personalBudget.logoutUser();
@@ -65,6 +66,6 @@ int main()
     }
 
 
-    personalBudget.displayAllUsers();
+    //personalBudget.displayAllUsers();
     return 0;
 }

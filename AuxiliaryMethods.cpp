@@ -36,3 +36,24 @@ string AuxiliaryMethods::loadLine()
     getline(cin, enrtrance);
     return enrtrance;
 }
+
+string AuxiliaryMethods::convertIntToString(int number)
+{
+    ostringstream ss;
+    ss << number;
+    string str = ss.str();
+
+    return str;
+}
+
+string AuxiliaryMethods::convertFloatToString(float amount)
+{
+    std::stringstream FloatToStr;
+    std::string str;
+
+    FloatToStr << amount;
+    FloatToStr >> str;
+    FloatToStr.clear();
+
+    return str;
+}

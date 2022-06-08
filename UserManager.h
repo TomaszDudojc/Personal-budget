@@ -30,11 +30,13 @@ public:
     void displayAllUsers();
     int loginUser();
     bool isUserLoggedIn();
-   //void changePassword();
+   void changePassword();
+   //void addNewPasswordToFile();
     void addUserToFile();
     void logoutUser();
 
     char selectOptionFromUserMenu();
+    int getLoggedInUserId();
 
 };
 

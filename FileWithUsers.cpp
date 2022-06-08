@@ -24,7 +24,7 @@ void FileWithUsers::addUserToFile(User user)
 
     xml.Save(fileNameWithUsers);
 }
-vector <User> FileWithUsers :: loadUsersFromFile()
+vector <User> FileWithUsers::loadUsersFromFile()
 {
     User user;
     vector <User> users;
@@ -64,3 +64,33 @@ vector <User> FileWithUsers :: loadUsersFromFile()
 
     return users;
 }
+/*
+void FileWithUsers::addNewPasswordToFile(vector <User> users, int loggedInUserId)
+{
+    //CMarkup xml;
+    //bool fileExists = xml.Load("expenses.xml");
+    //xml.Load("expenses.xml");
+    //xml.SetDoc( fileNameWithUsers )
+    User user;
+    CMarkup xml;
+    string fileNameWithUsers=XmlFile::getFileName();
+    bool fileExists = xml.Load(fileNameWithUsers);
+
+    xml.ResetPos();
+    xml.FindElem();
+    xml.IntoElem();
+    while ( xml.FindElem("UserID")==true);
+
+    {
+        int userId = atoi(xml.GetData().c_str());//atoi( MCD_2PCSZ(xml.GetData()));
+        if ( userId == loggedInUserId )
+        {
+            xml.FindElem("Password");
+            xml.RemoveElem();
+            xml.AddElem("Password", user.getPassword());
+        }
+    }
+
+    xml.Save(fileNameWithUsers);
+}*/
+
