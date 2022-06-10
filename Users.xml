@@ -21,4 +21,11 @@
 <Login>sil</Login>
 <Password>789</Password>
 </User>
+<User>
+<UserID>4</UserID>
+<Name>Tom</Name>
+<Surname>Kowal</Surname>
+<Login>9</Login>
+<Password>9</Password>
+</User>
 </Users>

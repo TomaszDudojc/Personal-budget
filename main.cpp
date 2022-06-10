@@ -5,7 +5,7 @@ using namespace std;
 
 int main()
 {
-    PersonalBudget personalBudget("Users.xml");
+    PersonalBudget personalBudget("Users.xml", "Incomes.xml");
     char choice = 0;
     int loggedInUserId = 0;
 
@@ -35,7 +35,7 @@ int main()
             switch (choice)
             {
             case '1':
-                //personalBudget.addIncome();
+                personalBudget.addIncome();
                 break;
             case '2':
                 //personalBudget.addExpense();

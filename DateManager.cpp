@@ -1,6 +1,6 @@
 #include "DateManager.h"
 
-string addZeroToStringDate(string date)
+string DateManager::addZeroToStringDate(string date)
 {
     string dateWithZero;
     if (date.size()==1) dateWithZero=date.insert (0,1,'0');
@@ -9,7 +9,7 @@ string addZeroToStringDate(string date)
     return dateWithZero;
 }
 
-string addDashToDate(string date)
+string DateManager::addDashToDate(string date)
  {
     string stringDateWithDash;
     stringDateWithDash = date.insert (4,1,'-');
@@ -18,7 +18,7 @@ string addDashToDate(string date)
     return stringDateWithDash;
 }
 
-string convertIntDateToStringDate(int year, int month, int day)
+string DateManager::convertIntDateToStringDate(int year, int month, int day)
 {
     string stringYear, stringMonth, stringDay,  stringDate;
     stringYear=AuxiliaryMethods::convertIntToString(year);
@@ -32,7 +32,7 @@ string convertIntDateToStringDate(int year, int month, int day)
     return stringDate;
 }
 
-int getCurrentYear()
+int DateManager::getCurrentYear()
 {
     time_t calculatedTime;
     struct tm * data;
@@ -44,7 +44,7 @@ int getCurrentYear()
     return year;
 }
 
-int getCurrentMonth()
+int DateManager::getCurrentMonth()
 {
     time_t calculatedTime;
     struct tm * data;
@@ -56,7 +56,7 @@ int getCurrentMonth()
     return month;
 }
 
-int getCurrentDay()
+int DateManager::getCurrentDay()
 {
     time_t calculatedTime;
     struct tm * data;
@@ -68,7 +68,7 @@ int getCurrentDay()
     return day;
 }
 
-void displayCurrentDate()
+string DateManager::createCurrentDate()
 {
     int year, month, day;
     string currentDate;
@@ -77,20 +77,20 @@ void displayCurrentDate()
     day = getCurrentDay();
     currentDate=convertIntDateToStringDate(year,month,day);
     currentDate=addDashToDate(currentDate);
-    cout<<"Current date: "<<currentDate<<endl;
+
+    return currentDate;
 }
 
-int convertStringDateToIntDate (string date)
+int DateManager::convertStringDateToIntDate (string date)
 {
-    int year = (date[0]-'0')*10000000 + (date[1]-'0')*1000000 + (date[2]-'0')*100000 + (date[3]-'0')*10000;
-    int month = (date[5]-'0')*1000 + (date[6]-'0')*100;
-    int day = (date[8]-'0')*10 + (date[9]-'0');
+   //convert stringDate e.g 2022-01-15 to intDate 20220115 //
+   //----------------------------------------------------- //
+    int intDate = (date[0]-'0')*10000000 + (date[1]-'0')*1000000 + (date[2]-'0')*100000 + (date[3]-'0')*10000 + (date[5]-'0')*1000 + (date[6]-'0')*100 + (date[8]-'0')*10 + (date[9]-'0');
 
-    int intDate= year+month+day;
     return intDate;
 }
 
-bool isLeap(int year)
+bool DateManager::isLeapYear(int year)
 {
     if(((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0))
     {
@@ -98,7 +98,7 @@ bool isLeap(int year)
     }
     else return false;
 }
-int checkNumberOfDaysInMonth(int year, int month)
+int DateManager::checkNumberOfDaysInMonth(int year, int month)
 {
     switch(month)
     {
@@ -120,7 +120,7 @@ int checkNumberOfDaysInMonth(int year, int month)
         break;
 
     case 2:
-        if (isLeap(year)) return 29;
+        if (isLeapYear(year)) return 29;
         else return 28;
         break;
     default:
@@ -128,7 +128,7 @@ int checkNumberOfDaysInMonth(int year, int month)
     }
 }
 
-string createDateOfFirstDayOfMonth (int month)
+string DateManager::createDateOfFirstDayOfMonth (int month)
 {
     int year = getCurrentYear();
     const int firstDayOfMonth=1;
@@ -138,7 +138,7 @@ string createDateOfFirstDayOfMonth (int month)
     return dateOfFirstDayOfMonth;
 }
 
-string createDateOfLastDayOfMonth (int month)
+string DateManager::createDateOfLastDayOfMonth (int month)
 {
     int year = getCurrentYear();
     int lastDayOfMonth=checkNumberOfDaysInMonth(year, month);
@@ -147,3 +147,55 @@ string createDateOfLastDayOfMonth (int month)
 
     return dateOfLastDayOfMonth;
 }
+
+bool DateManager::isDateCorrect(string date)
+{
+
+    int year = AuxiliaryMethods::convertStringToInt(date.substr(0,4));
+    int month = AuxiliaryMethods::convertStringToInt(date.substr(5,2));
+    int day = AuxiliaryMethods::convertStringToInt(date.substr(8,2));
+
+   if (isDateFormatCorrect(date)==false || isYearCorrect(year)==false || isMonthCorrect(month,year)==false  || isDayCorrect(day,month,year)==false)
+    {
+        cout<<"Incorrect date! ";
+        return false;
+    }
+    return true;
+}
+
+bool DateManager::isDateFormatCorrect(string date)
+{
+ if ((!date.size() == 10) || (!date[0] == 2) || (date[4] != '-') || (date[7] != '-'))
+    {
+      return false;
+    }
+    return true;
+}
+
+bool DateManager::isYearCorrect(int year)
+{
+    if (year>getCurrentYear() || year<MIN_FEASIBLE_YEAR)
+    {
+        return false;
+    }
+    return true;
+}
+
+bool DateManager::isMonthCorrect(int month, int year)
+{
+    if(month<1 || month>12 ||(year==getCurrentYear() && month>getCurrentMonth()))
+    {
+        return false;
+    }
+    return true;
+}
+
+bool DateManager::isDayCorrect(int day, int month, int year)
+{
+    if (day<1 || day>checkNumberOfDaysInMonth(year, month))
+    {
+        return false;
+    }
+    return true;
+}
+

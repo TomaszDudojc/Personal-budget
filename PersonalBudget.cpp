@@ -1,5 +1,4 @@
 #include "PersonalBudget.h"
-#include "AuxiliaryMethods.h"
 
 char PersonalBudget::selectOptionFromMainMenu()
 {
@@ -31,6 +30,10 @@ void PersonalBudget::registerUser()
 int PersonalBudget::loginUser()
 {
     userManager.loginUser();
+    if (userManager.isUserLoggedIn())
+    {
+        transactionManager = new TransactionManager (FILE_NAME_WITH_INCOMES, userManager.getLoggedInUserId());
+    }
 }
 
 bool PersonalBudget::isUserLoggedIn()
@@ -41,6 +44,8 @@ bool PersonalBudget::isUserLoggedIn()
 void PersonalBudget::logoutUser()
 {
     userManager.logoutUser();
+    delete transactionManager;
+    transactionManager = NULL;
 }
 
 char PersonalBudget::selectOptionFromUserMenu()
@@ -52,3 +57,18 @@ void PersonalBudget::changePassword()
 {
     userManager.changePassword();
 }
+
+void PersonalBudget::addIncome()
+{
+    if (userManager.isUserLoggedIn())
+    {
+        transactionManager->addIncome();
+    }
+    else
+    {
+        cout << "You need to login " << endl;
+        system ("pause");
+    };
+}
+
+
