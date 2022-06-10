@@ -176,9 +176,9 @@ void UserManager::addNewPasswordToFile()
     fileWithUsers.addNewPasswordToFile(users, loggedInUserId);
 }
 */
-/*
+
 int UserManager::getLoggedInUserId()
 {
     return loggedInUserId;
-}*/
+}
 

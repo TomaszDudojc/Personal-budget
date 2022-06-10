@@ -45,6 +45,14 @@ string AuxiliaryMethods::convertIntToString(int number)
 
     return str;
 }
+int AuxiliaryMethods::convertStringToInt(string number)
+{
+    int numberInt;
+    istringstream iss(number);
+    iss >> numberInt;
+
+    return numberInt;
+}
 
 string AuxiliaryMethods::convertFloatToString(float amount)
 {
@@ -57,3 +65,43 @@ string AuxiliaryMethods::convertFloatToString(float amount)
 
     return str;
 }
+
+float AuxiliaryMethods::convertStringToFloat(string str)
+{
+    float num_float = std::stof(str);
+
+    return num_float;
+}
+
+float AuxiliaryMethods::loadFloat()
+{
+    string entrance = "";
+    float number;
+
+    while (true)
+    {
+        cin.clear();
+        getline(cin, entrance);
+
+        stringstream myStream(entrance);
+        if (myStream >> number)
+            break;
+        cout << "This is not the amount. Please retype." << endl;
+    }
+    return number;
+}
+
+string AuxiliaryMethods::replaceCommaWithDot(string text)
+{
+    for (int i=0; i<text.size(); i++)
+    {
+        if (text[i]==',')
+        {
+            text[i]='.';
+        }
+        else i++;
+    }
+    return text;
+}
+
+

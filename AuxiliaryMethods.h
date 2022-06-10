@@ -16,8 +16,11 @@ public:
     static string changeFirstLetterToCapitalAndOtherToLowercase(string text);
     static string loadLine();
     static string convertIntToString(int number);
+    static int convertStringToInt(string number);
     static string convertFloatToString(float amount);
-
+    static float loadFloat();
+    static float convertStringToFloat(string str);
+    static string replaceCommaWithDot(string text);
 
 };
 

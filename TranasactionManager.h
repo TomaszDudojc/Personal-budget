@@ -1,33 +1,53 @@
-#ifndef TRANSACTIONMANAGER_H
-#define TRANSACTIONMANAGER_H
+#ifndef TRANASACTIONMANAGER_H
+#define TRANASACTIONMANAGER_H
 
 #include <iostream>
+#include <iostream>
 #include <vector>
+#include <string>
+
+
 
 #include "Transaction.h"
+#include "User.h"
+#include "UserManager.h"
+#include "DateManager.h"
+#include "FileWithIncomes.h"
+//#include "FileWithExpenses.h"
+
+
 
 using namespace std;
 
-class TranasactionMananger
+class TransactionManager
 {
     const int LOGGED_IN_USER_ID;
-    vector <Transaction> icomes;
+    vector <Transaction> incomes;
     vector <Transaction> expenses;
 
-    //FileWithIncomes fileWithIncomes;
-   // FileWithExpenses fileWithExpenses;
+    FileWithIncomes fileWithIncomes;
+   //FileWithExpenses fileWithExpenses;
 
-    //Transaction getNewIncomeData();
+    Transaction getNewIncomeData();
     //Transaction getNewExpenseData();
-    //int getNewIncomeId();
+    int getNewIncomeId();
     //int getNewExpenseId();
-    //void sortByDate();
+    void sortByDate();
+    float correctAmountFormat(string amount);
+
 
 public:
 
-    TransactionManager();
+    TransactionManager (string fileNameWithIncomes, int loggedInUserId) : fileWithIncomes (fileNameWithIncomes),LOGGED_IN_USER_ID(loggedInUserId)
+    {
+        incomes = fileWithIncomes.getIncomeFromFile(LOGGED_IN_USER_ID);
+        //expenses = fileWithExpenses.getExpenseFromFile(LOGGED_IN_USER_ID);
+    };
+
+
+    void addIncome();
     //void addExpense();
-    //void displayAllIncomes();
+    void displayAllIncomesSortedByDate();
     //void displayAllExpenses();
     //void displayIncome();
     //void displayExpense();
@@ -44,7 +64,6 @@ public:
 
 
 #endif
-
 
 /*
 using namespace std;
