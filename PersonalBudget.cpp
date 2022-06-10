@@ -68,7 +68,7 @@ void PersonalBudget::addIncome()
     {
         cout << "You need to login " << endl;
         system ("pause");
-    };
+    }
 }
 
 void PersonalBudget::addExpense()
@@ -81,5 +81,18 @@ void PersonalBudget::addExpense()
     {
         cout << "You need to login " << endl;
         system ("pause");
-    };
+    }
+}
+
+void PersonalBudget::displayBalanceForSelectedPeriod()
+{
+    if (userManager.isUserLoggedIn())
+    {
+        transactionManager->displayBalanceForSelectedPeriod();
+    }
+    else
+    {
+        cout << "You need to login " << endl;
+        system ("pause");
+    }
 }
