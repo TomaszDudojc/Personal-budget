@@ -1,5 +1,5 @@
-#ifndef INCOMEFILE_H
-#define INCOMEFILE_H
+#ifndef FILEWITHINCOMES_H
+#define FILEWITHINCOMES_H
 
 #include <iostream>
 #include <vector>
@@ -30,7 +30,7 @@ public:
     void addIncomeToFile(Transaction income);
     vector <Transaction> getIncomeFromFile(int loggedInUserId);
 
-    //int getLastItemId();
+    //int getLastTransactionId();
 };
 
 #endif
