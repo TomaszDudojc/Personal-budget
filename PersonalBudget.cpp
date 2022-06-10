@@ -32,7 +32,7 @@ int PersonalBudget::loginUser()
     userManager.loginUser();
     if (userManager.isUserLoggedIn())
     {
-        transactionManager = new TransactionManager (FILE_NAME_WITH_INCOMES, userManager.getLoggedInUserId());
+        transactionManager = new TransactionManager (FILE_NAME_WITH_INCOMES, FILE_NAME_WITH_EXPENSES, userManager.getLoggedInUserId());
     }
 }
 
@@ -71,4 +71,15 @@ void PersonalBudget::addIncome()
     };
 }
 
-
+void PersonalBudget::addExpense()
+{
+    if (userManager.isUserLoggedIn())
+    {
+        transactionManager->addExpense();
+    }
+    else
+    {
+        cout << "You need to login " << endl;
+        system ("pause");
+    };
+}

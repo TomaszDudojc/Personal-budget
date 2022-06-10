@@ -14,10 +14,11 @@ class PersonalBudget
     UserManager userManager;
     TransactionManager *transactionManager;
     const string FILE_NAME_WITH_INCOMES;
-    //const string FILE_NAME_WITH_EXPENSES;
+    const string FILE_NAME_WITH_EXPENSES;
+
 public:
-    PersonalBudget(string fileNameWithUsers, string FileNameWithIncomes)
-        : userManager(fileNameWithUsers), FILE_NAME_WITH_INCOMES(FileNameWithIncomes)
+    PersonalBudget(string fileNameWithUsers, string FileNameWithIncomes, string FileNameWithExpenses)
+        : userManager(fileNameWithUsers), FILE_NAME_WITH_INCOMES(FileNameWithIncomes), FILE_NAME_WITH_EXPENSES(FileNameWithExpenses)
     {
         transactionManager = NULL;
     }
@@ -38,7 +39,7 @@ public:
 
     char selectOptionFromUserMenu();
     void addIncome();
-
+    void addExpense();
 };
 
 
