@@ -40,6 +40,7 @@ public:
     char selectOptionFromUserMenu();
     void addIncome();
     void addExpense();
+    void displayBalanceForSelectedPeriod();
 };
 
 

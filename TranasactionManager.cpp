@@ -162,10 +162,12 @@ int TransactionManager::getNewExpenseId()
 void TransactionManager::displayAllIncomesSortedByDate()
 {
     sortIncomesByDate();
+
     float totalIncomesAmount=0.00;
+
     for (int i = 0; i < incomes.size(); i++)
     {
-        cout<<"date: "<<incomes[i].getDate()<<"| id: "<<incomes[i].getId()<<".| user id: "<<incomes[i].getUserId()<<".| name: "<<incomes[i].getName()<<"| amount: "<<incomes[i].getAmount()<<endl;
+        displayIncome(i);
         totalIncomesAmount+=incomes[i].getAmount();
     }
     cout<<"Total incomes amouont: "<<totalIncomesAmount<<endl<<endl;
@@ -174,13 +176,26 @@ void TransactionManager::displayAllIncomesSortedByDate()
 void TransactionManager::displayAllExpensesSortedByDate()
 {
     sortExpensesByDate();
+
     float totalExpensesAmount=0.00;
+
     for (int i = 0; i < expenses.size(); i++)
     {
         cout<<"date: "<<expenses[i].getDate()<<"| id: "<<expenses[i].getId()<<".| user id: "<<expenses[i].getUserId()<<".| name: "<<expenses[i].getName()<<"| amount: "<<expenses[i].getAmount()<<endl;
         totalExpensesAmount+=expenses[i].getAmount();
     }
     cout<<"Total expenses amouont: "<<totalExpensesAmount<<endl<<endl;
+}
+
+void TransactionManager::displayIncome(int i)
+{
+   cout<<"date: "<<incomes[i].getDate()<<"| id: "<<incomes[i].getId()<<".| user id: "<<incomes[i].getUserId()<<".| name: "<<incomes[i].getName()<<"| amount: "<<incomes[i].getAmount()<<endl;
+
+}
+
+void TransactionManager::displayExpense(int i)
+{
+   cout<<"date: "<<expenses[i].getDate()<<"| id: "<<expenses[i].getId()<<".| user id: "<<expenses[i].getUserId()<<".| name: "<<expenses[i].getName()<<"| amount: "<<expenses[i].getAmount()<<endl;
 }
 
 void TransactionManager::sortIncomesByDate()
@@ -199,5 +214,94 @@ float TransactionManager::correctAmountFormat(string stringAmount)
     float amount=AuxiliaryMethods::convertStringToFloat(stringAmount);
 
     return amount;
+}
+
+void TransactionManager::displayBalanceForSelectedPeriod()
+{
+    DateManager dateManager;
+    string firstDateOfPeriod,lastDateOfPeriod;
+    do
+    {
+        cout << "Enter first date in format YYYY-MM-DD: ";
+        firstDateOfPeriod = AuxiliaryMethods::loadLine();
+    }
+    while (dateManager.isDateCorrect(firstDateOfPeriod) == false);
+
+    do
+    {
+        cout << "Enter last date in format YYYY-MM-DD: ";
+        lastDateOfPeriod = AuxiliaryMethods::loadLine();
+    }
+    while (dateManager.isDateCorrect(lastDateOfPeriod) == false);
+
+    float totalIncomesAmount=getIncomesFromDateToDate(firstDateOfPeriod,lastDateOfPeriod);
+
+    if (totalIncomesAmount==0) cout<<"There are no incomes in selected period."<<endl<<endl;
+    else cout<<"Total incomes amouont: "<<totalIncomesAmount<<endl<<endl;
+
+    float totalExpensesAmount=getExpensesFromDateToDate(firstDateOfPeriod,lastDateOfPeriod);
+
+    if (totalExpensesAmount==0) cout<<"There are no expenses in selected period."<<endl<<endl;
+    else cout<<"Total expenses amouont: "<<totalExpensesAmount<<endl<<endl;
+
+    cout<<"Transaction balance of period from "<<firstDateOfPeriod<<" to "<<firstDateOfPeriod<<": "<<totalIncomesAmount-totalExpensesAmount<<endl;
+    cout<<"---------------------------------------------------------------------"<<endl<<endl;
+    system("pause");
+}
+
+float TransactionManager::getIncomesFromDateToDate(string firstDate, string lastDate)
+{
+    DateManager dateManager;
+
+    int intFirstDate=dateManager.convertStringDateToIntDate(firstDate);
+    int intLastDate=dateManager.convertStringDateToIntDate(lastDate);
+
+    float totalIncomesAmount=0.00;
+
+    if (intFirstDate<=intLastDate)
+    {
+        sortIncomesByDate();
+
+        cout<<endl<<"Incomes of period from "<<firstDate<<" to "<<lastDate<<":"<<endl;
+
+        for (int i = 0; i < incomes.size(); i++)
+        {
+            if (incomes[i].getIntDate()>=intFirstDate && incomes[i].getIntDate()<=intLastDate)
+            {
+                displayIncome(i);
+                totalIncomesAmount+=incomes[i].getAmount();
+            }
+        }
+        return totalIncomesAmount;
+    }
+    else  cout<<"Uncorrect range of dates!";
+}
+
+float TransactionManager::getExpensesFromDateToDate(string firstDate, string lastDate)
+{
+    DateManager dateManager;
+
+    int intFirstDate=dateManager.convertStringDateToIntDate(firstDate);
+    int intLastDate=dateManager.convertStringDateToIntDate(lastDate);
+
+    float totalExpensesAmount=0.00;
+
+    if (intFirstDate<=intLastDate)
+    {
+        sortExpensesByDate();
+
+        cout<<"Expenses of period from "<<firstDate<<" to "<<lastDate<<":"<<endl;
+
+        for (int i = 0; i < expenses.size(); i++)
+        {
+            if (expenses[i].getIntDate()>=intFirstDate && expenses[i].getIntDate()<=intLastDate)
+            {
+                displayExpense(i);
+                totalExpensesAmount+=expenses[i].getAmount();
+            }
+        }
+        return totalExpensesAmount;
+    }
+    else  cout<<"Uncorrect range of dates!";
 }
 

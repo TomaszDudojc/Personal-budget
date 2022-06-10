@@ -10,11 +10,12 @@ class Transaction
     int userId;
     int id;
     string date;
-    int intDate;
+
     string name;
     float amount;
 
 public:
+    int intDate;
     Item(int userId = 0, int Id = 0, string date = "", int intDate = 0, string name = "", float amount = 0.0)
     {
         this->userId = userId;

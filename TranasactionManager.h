@@ -36,6 +36,10 @@ class TransactionManager
     void sortIncomesByDate();
     void sortExpensesByDate();
     float correctAmountFormat(string amount);
+   float getIncomesFromDateToDate(string firstDate, string lastDate);
+   float getExpensesFromDateToDate(string firstDate, string lastDate);
+   void displayIncome(int i);
+  void displayExpense(int i);
 
 public:
 
@@ -49,16 +53,17 @@ public:
     void addExpense();
     void displayAllIncomesSortedByDate();
     void displayAllExpensesSortedByDate();
-    //void displayIncome();
-    //void displayExpense();
+    void displayBalanceForSelectedPeriod();
+
+
     //void displayIncomesFromDateToDate;
     //void displayExpensesFromDateToDate;
     //void displayCurrentMonthIncomes;
     //void displayCurrentMonthEkspenses;
     //void displayPreviousMonthIncomes;
     //void displayPreviousMonthEkspenses;
-    //void displaySelectedPeriodIncomes;
-    //void displaySelectedPeriodEkspenses;
+    //void displaySelectedPeriodIncomes();
+
 };
 
 
