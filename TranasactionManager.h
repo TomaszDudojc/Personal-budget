@@ -36,6 +36,7 @@ class TransactionManager
     void sortIncomesByDate();
     void sortExpensesByDate();
     float correctAmountFormat(string amount);
+    void displayBalanceFromDateToDate(string firstDate, string lastDate);
    float getIncomesFromDateToDate(string firstDate, string lastDate);
    float getExpensesFromDateToDate(string firstDate, string lastDate);
    void displayIncome(int i);
@@ -54,7 +55,7 @@ public:
     void displayAllIncomesSortedByDate();
     void displayAllExpensesSortedByDate();
     void displayBalanceForSelectedPeriod();
-
+    void displayBalanceForCurrentMonth();
 
     //void displayIncomesFromDateToDate;
     //void displayExpensesFromDateToDate;

@@ -96,3 +96,16 @@ void PersonalBudget::displayBalanceForSelectedPeriod()
         system ("pause");
     }
 }
+
+void PersonalBudget::displayBalanceForCurrentMonth()
+{
+    if (userManager.isUserLoggedIn())
+    {
+        transactionManager->displayBalanceForCurrentMonth();
+    }
+    else
+    {
+        cout << "You need to login " << endl;
+        system ("pause");
+    }
+}

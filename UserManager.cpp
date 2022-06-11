@@ -71,9 +71,11 @@ bool UserManager::loginExists(string login)
         if (users[i].getLogin()==login)
         {
             cout << endl << "There is a user with this login." << endl;
+
             return true;
         }
     }
+
     return false;
 }
 
@@ -111,6 +113,7 @@ int UserManager::loginUser()
     }
     cout << "There is no user with this login." << endl << endl;
     system("pause");
+
     return 0;
 }
 
