@@ -198,4 +198,3 @@ bool DateManager::isDayCorrect(int day, int month, int year)
     }
     return true;
 }
-

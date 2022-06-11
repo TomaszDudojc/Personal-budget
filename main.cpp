@@ -41,7 +41,7 @@ int main()
                 personalBudget.addExpense();
                 break;
             case '3':
-                //personalBudget.displayBalanceForCurrentMonth();
+                personalBudget.displayBalanceForCurrentMonth();
                 break;
             case '4':
                 //personalBudget.displayBalanceForPreviousMonth();
@@ -51,11 +51,10 @@ int main()
                 break;
             case '6':
                 personalBudget.changePassword();
-                personalBudget.displayAllUsers();
+                //personalBudget.displayAllUsers();
                 break;
             case '7':
                 personalBudget.logoutUser();
-                //transaction.clear();
                 break;
             default:
                 cout << endl << "There is no such option on the menu." << endl << endl;
@@ -65,7 +64,5 @@ int main()
         }
     }
 
-
-    //personalBudget.displayAllUsers();
-    return 0;
+return 0;
 }

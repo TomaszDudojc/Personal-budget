@@ -220,6 +220,7 @@ void TransactionManager::displayBalanceForSelectedPeriod()
 {
     DateManager dateManager;
     string firstDateOfPeriod,lastDateOfPeriod;
+
     do
     {
         cout << "Enter first date in format YYYY-MM-DD: ";
@@ -234,17 +235,24 @@ void TransactionManager::displayBalanceForSelectedPeriod()
     }
     while (dateManager.isDateCorrect(lastDateOfPeriod) == false);
 
-    float totalIncomesAmount=getIncomesFromDateToDate(firstDateOfPeriod,lastDateOfPeriod);
+    displayBalanceFromDateToDate(firstDateOfPeriod, lastDateOfPeriod);
+}
+
+void TransactionManager::displayBalanceFromDateToDate(string firstDate, string lastDate)
+{
+    DateManager dateManager;
+
+    float totalIncomesAmount=getIncomesFromDateToDate(firstDate, lastDate);
 
     if (totalIncomesAmount==0) cout<<"There are no incomes in selected period."<<endl<<endl;
     else cout<<"Total incomes amouont: "<<totalIncomesAmount<<endl<<endl;
 
-    float totalExpensesAmount=getExpensesFromDateToDate(firstDateOfPeriod,lastDateOfPeriod);
+    float totalExpensesAmount=getExpensesFromDateToDate(firstDate, lastDate);
 
     if (totalExpensesAmount==0) cout<<"There are no expenses in selected period."<<endl<<endl;
     else cout<<"Total expenses amouont: "<<totalExpensesAmount<<endl<<endl;
 
-    cout<<"Transaction balance of period from "<<firstDateOfPeriod<<" to "<<firstDateOfPeriod<<": "<<totalIncomesAmount-totalExpensesAmount<<endl;
+    cout<<"Transaction balance of period from "<<firstDate<<" to "<<lastDate<<": "<<totalIncomesAmount-totalExpensesAmount<<endl;
     cout<<"---------------------------------------------------------------------"<<endl<<endl;
     system("pause");
 }
@@ -252,11 +260,10 @@ void TransactionManager::displayBalanceForSelectedPeriod()
 float TransactionManager::getIncomesFromDateToDate(string firstDate, string lastDate)
 {
     DateManager dateManager;
-
-    int intFirstDate=dateManager.convertStringDateToIntDate(firstDate);
-    int intLastDate=dateManager.convertStringDateToIntDate(lastDate);
-
     float totalIncomesAmount=0.00;
+
+     int intFirstDate=dateManager.convertStringDateToIntDate(firstDate);
+     int intLastDate=dateManager.convertStringDateToIntDate(lastDate);
 
     if (intFirstDate<=intLastDate)
     {
@@ -280,11 +287,10 @@ float TransactionManager::getIncomesFromDateToDate(string firstDate, string last
 float TransactionManager::getExpensesFromDateToDate(string firstDate, string lastDate)
 {
     DateManager dateManager;
+    float totalExpensesAmount=0.00;
 
     int intFirstDate=dateManager.convertStringDateToIntDate(firstDate);
     int intLastDate=dateManager.convertStringDateToIntDate(lastDate);
-
-    float totalExpensesAmount=0.00;
 
     if (intFirstDate<=intLastDate)
     {
@@ -303,5 +309,16 @@ float TransactionManager::getExpensesFromDateToDate(string firstDate, string las
         return totalExpensesAmount;
     }
     else  cout<<"Uncorrect range of dates!";
+}
+
+void TransactionManager::displayBalanceForCurrentMonth()
+{
+    DateManager dateManager;
+
+    int month=dateManager.getCurrentMonth();
+    string dateOfFirstDayOfMonth = dateManager.createDateOfFirstDayOfMonth(month);
+    string dateOfLastDayOfMonth = dateManager.createDateOfLastDayOfMonth(month);
+
+    displayBalanceFromDateToDate(dateOfFirstDayOfMonth, dateOfLastDayOfMonth);
 }
 
