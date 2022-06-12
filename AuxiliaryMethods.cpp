@@ -99,7 +99,6 @@ string AuxiliaryMethods::replaceCommaWithDot(string text)
         {
             text[i]='.';
         }
-        else i++;
     }
     return text;
 }
