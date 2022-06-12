@@ -20,6 +20,8 @@ string DateManager::addDashToDate(string date)
 
 string DateManager::convertIntDateToStringDate(int year, int month, int day)
 {
+    //convert intDate e.g (int year=2022, int month=1, int day=15) to stringDate 2022-01-15//
+   //-------------------------------------------------------------------------------------//
     string stringYear, stringMonth, stringDay,  stringDate;
     stringYear=AuxiliaryMethods::convertIntToString(year);
     stringMonth=AuxiliaryMethods::convertIntToString(month);
@@ -27,7 +29,7 @@ string DateManager::convertIntDateToStringDate(int year, int month, int day)
     stringDay=AuxiliaryMethods::convertIntToString(day);
     stringDay=addZeroToStringDate(stringDay);
     stringDate=stringYear+stringMonth+stringDay;
-    addDashToDate(stringDate);
+    stringDate=addDashToDate(stringDate);
 
     return stringDate;
 }
@@ -84,7 +86,7 @@ string DateManager::createCurrentDate()
 int DateManager::convertStringDateToIntDate (string date)
 {
    //convert stringDate e.g 2022-01-15 to intDate 20220115 //
-   //----------------------------------------------------- //
+  //------------------------------------------------------//
     int intDate = (date[0]-'0')*10000000 + (date[1]-'0')*1000000 + (date[2]-'0')*100000 + (date[3]-'0')*10000 + (date[5]-'0')*1000 + (date[6]-'0')*100 + (date[8]-'0')*10 + (date[9]-'0');
 
     return intDate;
@@ -128,7 +130,7 @@ int DateManager::checkNumberOfDaysInMonth(int year, int month)
     }
 }
 
-string DateManager::createDateOfFirstDayOfMonth (int month)
+/*string DateManager::createDateOfFirstDayOfMonth (int month)
 {
     int year = getCurrentYear();
     const int firstDayOfMonth=1;
@@ -146,7 +148,7 @@ string DateManager::createDateOfLastDayOfMonth (int month)
     dateOfLastDayOfMonth = addDashToDate(dateOfLastDayOfMonth);
 
     return dateOfLastDayOfMonth;
-}
+}*/
 
 bool DateManager::isDateCorrect(string date)
 {

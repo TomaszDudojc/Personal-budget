@@ -6,16 +6,12 @@
 #include <vector>
 #include <string>
 
-
-
 #include "Transaction.h"
 #include "User.h"
 #include "UserManager.h"
 #include "DateManager.h"
 #include "FileWithIncomes.h"
 #include "FileWithExpenses.h"
-
-
 
 using namespace std;
 
@@ -37,10 +33,10 @@ class TransactionManager
     void sortExpensesByDate();
     float correctAmountFormat(string amount);
     void displayBalanceFromDateToDate(string firstDate, string lastDate);
-   float getIncomesFromDateToDate(string firstDate, string lastDate);
-   float getExpensesFromDateToDate(string firstDate, string lastDate);
-   void displayIncome(int i);
-  void displayExpense(int i);
+    float getIncomesFromDateToDate(string firstDate, string lastDate);
+    float getExpensesFromDateToDate(string firstDate, string lastDate);
+    void displayIncome(int i);
+    void displayExpense(int i);
 
 public:
 
@@ -56,7 +52,7 @@ public:
     void displayAllExpensesSortedByDate();
     void displayBalanceForSelectedPeriod();
     void displayBalanceForCurrentMonth();
-
+    void displayBalanceForPreviousMonth();
     //void displayIncomesFromDateToDate;
     //void displayExpensesFromDateToDate;
     //void displayCurrentMonthIncomes;
@@ -64,38 +60,5 @@ public:
     //void displayPreviousMonthIncomes;
     //void displayPreviousMonthEkspenses;
     //void displaySelectedPeriodIncomes();
-
 };
-
-
-
 #endif
-
-/*
-using namespace std;
-
-class AdresatMenedzer
-{
-    const int ID_ZALOGOWANEGO_UZYTKOWNIKA;
-    vector <Adresat> adresaci;
-    PlikZAdresatami plikZAdresatami;
-
-    Adresat podajDaneNowegoAdresata();
-    void wyswietlDaneAdresata(Adresat adresat);
-    void wyswietlIloscWyszukanychAdresatow(int iloscAdresatow);
-    int podajIdWybranegoAdresata();
-    char wybierzOpcjeZMenuEdycja();
-
-public:
-    AdresatMenedzer(string nazwaPlikuZAdresatami,int idZalogowanegoUzytkownika): plikZAdresatami(nazwaPlikuZAdresatami), ID_ZALOGOWANEGO_UZYTKOWNIKA(idZalogowanegoUzytkownika)
-    {
-        adresaci=plikZAdresatami.wczytajAdresatowZalogowanegoUzytkownikaZPliku(ID_ZALOGOWANEGO_UZYTKOWNIKA);
-    };
-
-    void dodajAdresata();
-    void wyswietlWszystkichAdresatow();
-    void wyszukajAdresatowPoImieniu();
-    void wyszukajAdresatowPoNazwisku();
-    void usunAdresata();
-    void edytujAdresata();
-};*/

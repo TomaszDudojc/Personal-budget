@@ -315,10 +315,43 @@ void TransactionManager::displayBalanceForCurrentMonth()
 {
     DateManager dateManager;
 
-    int month=dateManager.getCurrentMonth();
+    int year = dateManager.getCurrentYear();
+    int month = dateManager.getCurrentMonth();
+    const int firstDayOfMonth=1;
+    int lastDayOfMonth = dateManager.checkNumberOfDaysInMonth(year, month);
+
+    string dateOfFirstDayOfMonth = dateManager.convertIntDateToStringDate(year, month, firstDayOfMonth);
+    string dateOfLastDayOfMonth = dateManager.convertIntDateToStringDate (year, month, lastDayOfMonth);
+
+    /*month=dateManager.getCurrentMonth();
     string dateOfFirstDayOfMonth = dateManager.createDateOfFirstDayOfMonth(month);
-    string dateOfLastDayOfMonth = dateManager.createDateOfLastDayOfMonth(month);
+    string dateOfLastDayOfMonth = dateManager.createDateOfLastDayOfMonth(month);*/
 
     displayBalanceFromDateToDate(dateOfFirstDayOfMonth, dateOfLastDayOfMonth);
 }
 
+void TransactionManager::displayBalanceForPreviousMonth()
+{
+    DateManager dateManager;
+    int year = 0;
+    int month = 0;
+
+    if (dateManager.getCurrentMonth()==1)
+    {
+       year = dateManager.getCurrentYear()-1;
+       month = 12;
+    }
+    else
+    {
+       year = dateManager.getCurrentYear();
+       month = dateManager.getCurrentMonth()-1;
+    }
+
+    const int firstDayOfMonth = 1;
+   int lastDayOfMonth = dateManager.checkNumberOfDaysInMonth(year, month);
+
+    string dateOfFirstDayOfMonth = dateManager.convertIntDateToStringDate(year, month, firstDayOfMonth);
+    string dateOfLastDayOfMonth = dateManager.convertIntDateToStringDate (year, month, lastDayOfMonth);
+
+    displayBalanceFromDateToDate(dateOfFirstDayOfMonth, dateOfLastDayOfMonth);
+}
