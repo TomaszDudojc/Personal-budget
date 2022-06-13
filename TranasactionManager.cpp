@@ -108,7 +108,7 @@ Transaction TransactionManager::getNewTransactionData()
     transaction.setupUserId(LOGGED_IN_USER_ID);
 
     cout << "Do you want to add transaction with current date?" <<endl;
-    cout << "If yes, please click 'y', if you want to chose other date, please click 'n': " << endl;
+    cout << "If yes, please tpe 'y', if you want to chose other date, please type 'n': " << endl;
 
     choice = AuxiliaryMethods::loadCharacter();
 
@@ -170,7 +170,7 @@ void TransactionManager::displayAllIncomesSortedByDate()
         displayIncome(i);
         totalIncomesAmount+=incomes[i].getAmount();
     }
-    cout<<"Total incomes amouont: "<<totalIncomesAmount<<endl<<endl;
+    cout<<"Total incomes amouont: "<<totalIncomesAmount<<fixed<<setprecision(2)<<endl<<endl;
 }
 
 void TransactionManager::displayAllExpensesSortedByDate()
@@ -181,21 +181,21 @@ void TransactionManager::displayAllExpensesSortedByDate()
 
     for (int i = 0; i < expenses.size(); i++)
     {
-        cout<<"date: "<<expenses[i].getDate()<<"| id: "<<expenses[i].getId()<<".| user id: "<<expenses[i].getUserId()<<".| name: "<<expenses[i].getName()<<"| amount: "<<expenses[i].getAmount()<<endl;
+        displayExpense(i);
         totalExpensesAmount+=expenses[i].getAmount();
     }
-    cout<<"Total expenses amouont: "<<totalExpensesAmount<<endl<<endl;
+    cout<<"Total expenses amouont: "<<totalExpensesAmount<<fixed<<setprecision(2)<<endl<<endl;
 }
 
 void TransactionManager::displayIncome(int i)
 {
-   cout<<"date: "<<incomes[i].getDate()<<"| id: "<<incomes[i].getId()<<".| user id: "<<incomes[i].getUserId()<<".| name: "<<incomes[i].getName()<<"| amount: "<<incomes[i].getAmount()<<endl;
+   cout<<"date: "<<incomes[i].getDate()<<"| id: "<<incomes[i].getId()<<".| user id: "<<incomes[i].getUserId()<<".| name: "<<incomes[i].getName()<<"| amount: "<<incomes[i].getAmount()<<fixed<<setprecision(2)<<endl;
 
 }
 
 void TransactionManager::displayExpense(int i)
 {
-   cout<<"date: "<<expenses[i].getDate()<<"| id: "<<expenses[i].getId()<<".| user id: "<<expenses[i].getUserId()<<".| name: "<<expenses[i].getName()<<"| amount: "<<expenses[i].getAmount()<<endl;
+   cout<<"date: "<<expenses[i].getDate()<<"| id: "<<expenses[i].getId()<<".| user id: "<<expenses[i].getUserId()<<".| name: "<<expenses[i].getName()<<"| amount: "<<expenses[i].getAmount()<<fixed<<setprecision(2)<<endl;
 }
 
 void TransactionManager::sortIncomesByDate()
@@ -245,14 +245,14 @@ void TransactionManager::displayBalanceFromDateToDate(string firstDate, string l
     float totalIncomesAmount=getIncomesFromDateToDate(firstDate, lastDate);
 
     if (totalIncomesAmount==0) cout<<"There are no incomes in selected period."<<endl<<endl;
-    else cout<<"Total incomes amouont: "<<totalIncomesAmount<<endl<<endl;
+    else cout<<"Total incomes amouont: "<<totalIncomesAmount<<fixed<<setprecision(2)<<endl<<endl;
 
     float totalExpensesAmount=getExpensesFromDateToDate(firstDate, lastDate);
 
     if (totalExpensesAmount==0) cout<<"There are no expenses in selected period."<<endl<<endl;
-    else cout<<"Total expenses amouont: "<<totalExpensesAmount<<endl<<endl;
+    else cout<<"Total expenses amouont: "<<totalExpensesAmount<<fixed<<setprecision(2)<<endl<<endl;
 
-    cout<<"Transaction balance of period from "<<firstDate<<" to "<<lastDate<<": "<<totalIncomesAmount-totalExpensesAmount<<endl;
+    cout<<"Transaction balance of period from "<<firstDate<<" to "<<lastDate<<": "<<totalIncomesAmount-totalExpensesAmount<<fixed<<setprecision(2)<<endl;
     cout<<"---------------------------------------------------------------------"<<endl<<endl;
     system("pause");
 }

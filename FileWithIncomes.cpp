@@ -35,40 +35,50 @@ vector <Transaction> FileWithIncomes::getIncomeFromFile(int loggedInUserId)
 
     if (fileExists == true)
     {
+        xml.ResetPos();
         xml.FindElem();
         xml.IntoElem();
         while ( xml.FindElem("Income") == true)
         {
             xml.IntoElem();
-
             xml.FindElem("userId");
-            int userId = atoi(xml.GetData().c_str());//atoi( MCD_2PCSZ(xml.GetData()));
-            //if ( userId == loggedInUserId )
-            transaction.setupUserId(userId);
+            if (xml.GetData() == AuxiliaryMethods::convertIntToString(loggedInUserId))
 
-            xml.FindElem( "id");
-            int id = atoi(xml.GetData().c_str());
-            transaction.setupId(id);
+            {
+                //xml.ResetMainPos(); when "userId" is not the first element
+                //xml.FindElem("userId"); when "userId" is not the first element
+                int userId = atoi(xml.GetData().c_str());
+                transaction.setupUserId(userId);
 
+                xml.FindElem( "id");
+                int id = atoi(xml.GetData().c_str());
+                transaction.setupId(id);
 
-            xml.FindElem( "date");
-            string date = xml.GetData();
-            transaction.setupDate(date);
+                xml.FindElem( "date");
+                string date = xml.GetData();
+                transaction.setupDate(date);
 
-            xml.FindElem( "intDate");
-            int intDate = atoi(xml.GetData().c_str());
-             transaction.setupIntDate(intDate);
+                xml.FindElem( "intDate");
+                int intDate = atoi(xml.GetData().c_str());
+                transaction.setupIntDate(intDate);
 
-            xml.FindElem( "name");
-            string name = xml.GetData();
-            transaction.setupName(name);
+                xml.FindElem( "name");
+                string name = xml.GetData();
+                transaction.setupName(name);
 
-            xml.FindElem( "amount");
-            float amount = atof(xml.GetData().c_str());
-            transaction.setupAmount(amount);
-            incomes.push_back(transaction);
+                xml.FindElem( "amount");
+                float amount = atof(xml.GetData().c_str());
+                transaction.setupAmount(amount);
 
-            xml.OutOfElem();
+                incomes.push_back(transaction);
+
+                xml.OutOfElem();
+            }
+
+            else
+            {
+                xml.OutOfElem();
+            }
         }
     }
     return incomes;

@@ -159,7 +159,7 @@ bool DateManager::isDateCorrect(string date)
 
    if (isDateFormatCorrect(date)==false || isYearCorrect(year)==false || isMonthCorrect(month,year)==false  || isDayCorrect(day,month,year)==false)
     {
-        cout<<"Incorrect date! ";
+        cout<<"Incorrect date! "<<endl;
         return false;
     }
     return true;
@@ -195,7 +195,7 @@ bool DateManager::isYearCorrect(int year)
 
 bool DateManager::isMonthCorrect(int month, int year)
 {
-    if(month<1 || month>12 ||(year==getCurrentYear() && month>getCurrentMonth()))
+    if(month<1 || month>12 ||(year==getCurrentYear() && month>getCurrentMonth()))//max feasible date = last day of current month
     {
         return false;
     }

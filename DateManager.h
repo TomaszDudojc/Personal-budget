@@ -18,7 +18,6 @@ class DateManager
     struct tm * data;
     int MIN_FEASIBLE_YEAR = 2000; //min date 2000-01-01
 
-
     string addZeroToStringDate(string date);
     string addDashToDate(string date);
     //string createDateOfFirstDayOfMonth(int month);
