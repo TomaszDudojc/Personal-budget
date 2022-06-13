@@ -27,11 +27,11 @@ class TransactionManager
     FileWithIncomes fileWithIncomes;
     FileWithExpenses fileWithExpenses;
 
-    //Transaction getNewIncomeData();
-    //Transaction getNewExpenseData();
-    Transaction getNewTransactionData();
-    int getNewIncomeId();
-    int getNewExpenseId();
+    Transaction getNewIncomeData();
+    Transaction getNewExpenseData();
+    //Transaction getNewTransactionData();
+    //int getNewIncomeId();
+    //int getNewExpenseId();
     void sortIncomesByDate();
     void sortExpensesByDate();
     float correctAmountFormat(string amount);

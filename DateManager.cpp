@@ -78,7 +78,7 @@ string DateManager::createCurrentDate()
     month = getCurrentMonth();
     day = getCurrentDay();
     currentDate=convertIntDateToStringDate(year,month,day);
-    currentDate=addDashToDate(currentDate);
+    //currentDate=addDashToDate(currentDate);
 
     return currentDate;
 }

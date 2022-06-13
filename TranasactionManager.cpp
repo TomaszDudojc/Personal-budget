@@ -7,11 +7,10 @@ void TransactionManager::addIncome()
 
     system("cls");
     cout << " >>> ADDING NEW INCOME <<<" << endl << endl;
-    transaction.setupId(getNewIncomeId());//pozniej transaction.setupId(fileWithIncomes.getIdOfLastIncomeFromFile()+1);
-    income = getNewTransactionData();
 
-
+    income = getNewIncomeData();
     incomes.push_back(income);
+
     fileWithIncomes.addIncomeToFile(income);
     //if(fileWithIncomes.addIncomeToFile(income))
     cout << "Income added to the file" << endl;
@@ -28,9 +27,8 @@ void TransactionManager::addExpense()
 
     system("cls");
     cout << " >>> ADDING NEW EXPENSE <<<" << endl << endl;
-    transaction.setupId(getNewExpenseId());//pozniej transaction.setupId(fileWithExpenses.getIdOfLastIncomeFromFile()+1);
-    expense = getNewTransactionData();
 
+    expense = getNewExpenseData();
     expenses.push_back(expense);
     fileWithExpenses.addExpenseToFile(expense);
     //if(fileWithIncomes.addIncomeToFile(expense))
@@ -40,14 +38,8 @@ void TransactionManager::addExpense()
     displayAllExpensesSortedByDate();
     system("pause");
 }
-/*adresaci.push_back(adresat);
-    if (plikZAdresatami.dopiszAdresataDoPliku(adresat))
-        cout << "Nowy adresat zostal dodany" << endl;
-    else
-        cout << "Blad, nie udalo sie dodac adresata do pliku" << endl;
-    system ("pause");*/
 
-/*Transaction TransactionManager::getNewIncomeData()
+Transaction TransactionManager::getNewIncomeData()
 {
     DateManager dateManager;
     Transaction transaction;
@@ -56,11 +48,11 @@ void TransactionManager::addExpense()
     int id, intDate;
     char choice;
 
-    transaction.setupId(getNewIncomeId());//pozniej transaction.setupId(fileWithIncomes.getIdOfLastIncomeFromFile()+1);
+    transaction.setupId(fileWithIncomes.getIdOfLastIncomeFromFile()+1);
     transaction.setupUserId(LOGGED_IN_USER_ID);
 
     cout << "Do you want to add income with current date?" <<endl;
-    cout << "If yes, please click 'y', if you want to chose other date, please click 'n': " << endl;
+    cout << "If yes, please type 'y', if you want to chose other date, please type 'n': " << endl;
 
     choice = AuxiliaryMethods::loadCharacter();
 
@@ -93,9 +85,57 @@ void TransactionManager::addExpense()
     transaction.setupAmount(amount);
 
     return transaction;
-}*/
+}
 
-Transaction TransactionManager::getNewTransactionData()
+Transaction TransactionManager::getNewExpenseData()
+{
+    DateManager dateManager;
+    Transaction transaction;
+    string date, name;
+    float amount;
+    int id, intDate;
+    char choice;
+
+    transaction.setupId(fileWithExpenses.getIdOfLastExpenseFromFile()+1);
+    transaction.setupUserId(LOGGED_IN_USER_ID);
+
+    cout << "Do you want to add expense with current date?" <<endl;
+    cout << "If yes, please type 'y', if you want to chose other date, please type 'n': " << endl;
+
+    choice = AuxiliaryMethods::loadCharacter();
+
+    if (choice == 'y'||choice == 'Y')
+    {
+        date = dateManager.createCurrentDate();
+        cout<<"Current date: "<<date<<endl;
+    }
+    else if (choice == 'n'||choice == 'N')
+    {
+        do
+        {
+            cout << "Enter date in format YYYY-MM-DD: ";
+            date = AuxiliaryMethods::loadLine();
+        }
+        while (dateManager.isDateCorrect(date) == false);
+    }
+
+    transaction.setupDate(date);
+    intDate=dateManager.convertStringDateToIntDate(date);
+    transaction.setupIntDate(intDate);
+
+    cout << "Enter expense name: ";
+    name = AuxiliaryMethods::loadLine();
+    transaction.setupName(name);
+
+    cout << "Enter amount: ";
+    string stringAmount = AuxiliaryMethods::loadLine();
+    amount = correctAmountFormat(stringAmount);
+    transaction.setupAmount(amount);
+
+    return transaction;
+}
+
+/*Transaction TransactionManager::getNewTransactionData()
 {
     DateManager dateManager;
     Transaction transaction;
@@ -131,6 +171,8 @@ Transaction TransactionManager::getNewTransactionData()
     intDate=dateManager.convertStringDateToIntDate(date);
     transaction.setupIntDate(intDate);
 
+     transaction.setupId(fileWithIncomes.getIdOfLastIncomeFromFile()+1);
+
     cout << "Enter transaction name: ";
     name = AuxiliaryMethods::loadLine();
     transaction.setupName(name);
@@ -141,23 +183,23 @@ Transaction TransactionManager::getNewTransactionData()
     transaction.setupAmount(amount);
 
     return transaction;
-}
+}*/
 
-int TransactionManager::getNewIncomeId()
+/*int TransactionManager::getNewIncomeId()
 {
     if (incomes.empty() == true)
         return 1;
     else
         return incomes.back().getId() + 1;
-}
+}*/
 
-int TransactionManager::getNewExpenseId()
+/*int TransactionManager::getNewExpenseId()
 {
     if (expenses.empty() == true)
         return 1;
     else
         return expenses.back().getId() + 1;
-}
+}*/
 
 void TransactionManager::displayAllIncomesSortedByDate()
 {
