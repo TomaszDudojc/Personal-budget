@@ -5,7 +5,7 @@
 <Name>Tomasz</Name>
 <Surname>Kowal</Surname>
 <Login>tom</Login>
-<Password>123</Password>
+<Password>999</Password>
 </User>
 <User>
 <UserID>2</UserID>
@@ -26,6 +26,7 @@
 <Name>Tom</Name>
 <Surname>Kowal</Surname>
 <Login>9</Login>
-<Password>9</Password>
+<Password>nowe</Password>
 </User>
 </Users>
+

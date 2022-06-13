@@ -169,7 +169,7 @@ bool DateManager::isDateFormatCorrect(string date)
 {
     for (int i=5; i<=6; i++)
     {
-        if (date[i]<'0' || date[i]>'9')return false;
+        if (date[i]<'0' || date[i]>'9') return false;
     }
 
     for (int i=8; i<=9; i++)
@@ -177,8 +177,7 @@ bool DateManager::isDateFormatCorrect(string date)
         if (date[i]<'0' || date[i]>'9') return false;
     }
 
-    //if ((date.size() < 10) ||(date.size() > 10) || (!date[0] == 2) || (date[4] != '-') || (date[7] != '-'))
-    if ((!date[0] == 2) || (date[4] != '-') || (date[7] != '-'))
+    if (date[4] != '-' || date[7] != '-')
     {
         return false;
     }

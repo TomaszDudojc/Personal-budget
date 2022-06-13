@@ -9,6 +9,7 @@
 #include "XmlFile.h"
 #include "Markup.h"
 #include "User.h"
+#include "AuxiliaryMethods.h"
 
 using namespace std;
 
@@ -23,6 +24,7 @@ public:
     vector <User> loadUsersFromFile();
     //void addNewPasswordToFile(vector <User> users, int loggedInUserId);
 
+void addNewPasswordToFile(string newPassword, int loggedInUserId);
 };
 
 #endif
