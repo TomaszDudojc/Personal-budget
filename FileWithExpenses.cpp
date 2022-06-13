@@ -81,3 +81,28 @@ vector <Transaction> FileWithExpenses::getExpenseFromFile(int loggedInUserId)
     }
     return expenses;
 }
+
+int FileWithExpenses::getIdOfLastExpenseFromFile()
+{
+    CMarkup xml;
+    string fileNameWithExpenses = XmlFile :: getFileName();
+    bool fileExists = xml.Load(fileNameWithExpenses);
+    vector <int> idNumbersForExpense;
+    int lastExpenseId, idNumberForExpense ;
+    if (fileExists == true)
+    {
+        xml.ResetPos();
+        xml.FindElem();
+        xml.IntoElem();
+        while ( xml.FindElem("Expense") == true)
+        {
+            xml.IntoElem();
+            xml.FindElem( "id");
+            idNumberForExpense = atoi(xml.GetData().c_str());
+            idNumbersForExpense.push_back(idNumberForExpense);
+            xml.OutOfElem();
+        }
+    }
+    lastExpenseId=idNumbersForExpense.back();
+    return lastExpenseId;
+}

@@ -83,3 +83,28 @@ vector <Transaction> FileWithIncomes::getIncomeFromFile(int loggedInUserId)
     }
     return incomes;
 }
+
+int FileWithIncomes::getIdOfLastIncomeFromFile()
+{
+    CMarkup xml;
+    string fileNameWithIncomes = XmlFile :: getFileName();
+    bool fileExists = xml.Load(fileNameWithIncomes);
+    vector <int> idNumbersForIncome;
+    int lastIncomeId, idNumberForIncome ;
+    if (fileExists == true)
+    {
+        xml.ResetPos();
+        xml.FindElem();
+        xml.IntoElem();
+        while ( xml.FindElem("Income") == true)
+        {
+            xml.IntoElem();
+            xml.FindElem( "id");
+            idNumberForIncome = atoi(xml.GetData().c_str());
+            idNumbersForIncome.push_back(idNumberForIncome);
+            xml.OutOfElem();
+        }
+    }
+    lastIncomeId=idNumbersForIncome.back();
+    return lastIncomeId;
+}

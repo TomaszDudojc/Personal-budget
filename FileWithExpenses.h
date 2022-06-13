@@ -17,19 +17,19 @@ class FileWithExpenses : public XmlFile
 {
 
     string fileNameWithExpenses;
-    int lastTransactionId;
+    int lastExpenseId;
     int loggedInUserId;
     vector <Transaction> expenses;
 
 public:
     FileWithExpenses(string fileNameWithExpenses) : XmlFile(fileNameWithExpenses)
     {
-        //loggedInUserId = 0;
-        //lastTransactionId = 0;
+        loggedInUserId = 0;
+        lastExpenseId = 0;
     };
     void addExpenseToFile(Transaction expense);
     vector <Transaction> getExpenseFromFile(int loggedInUserId);
-
+    int getIdOfLastExpenseFromFile();
     //int getLastTransactionId();
 };
 
