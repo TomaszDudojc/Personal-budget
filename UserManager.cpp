@@ -152,6 +152,7 @@ char UserManager::selectOptionFromUserMenu()
     cout << "---------------------------" << endl;
     cout << "Your choice: ";
     choice = AuxiliaryMethods::loadCharacter();
+    cout<<endl;
 
     return choice;
 }
@@ -173,13 +174,10 @@ void UserManager::changePassword()
             system("pause");
         }
     }
-    //addNewPasswordToFile(newPassword);
 }
 
-//void UserManager::addNewPasswordToFile()
 void UserManager::addNewPasswordToFile(string newPassword)
 {
-    //fileWithUsers.addNewPasswordToFile(users, loggedInUserId);
     fileWithUsers.addNewPasswordToFile(newPassword, loggedInUserId);
 }
 

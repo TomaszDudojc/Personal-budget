@@ -21,7 +21,6 @@ int main()
                 personalBudget.registerUser();
                 break;
             case '2':
-                //loggedInUserId = personalBudget.loginUser();
                 personalBudget.loginUser();
                 break;
             case '9':
