@@ -32,6 +32,8 @@ public:
     bool isUserLoggedIn();
    void changePassword();
    //void addNewPasswordToFile();
+   void addNewPasswordToFile(string newPassword);
+
     void addUserToFile();
     void logoutUser();
 

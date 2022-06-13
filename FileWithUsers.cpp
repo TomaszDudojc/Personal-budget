@@ -1,5 +1,4 @@
 #include "FileWithUsers.h"
-#include "Markup.h"
 
 void FileWithUsers::addUserToFile(User user)
 {
@@ -64,33 +63,30 @@ vector <User> FileWithUsers::loadUsersFromFile()
 
     return users;
 }
-/*
-void FileWithUsers::addNewPasswordToFile(vector <User> users, int loggedInUserId)
+
+void FileWithUsers::addNewPasswordToFile(string newPassword, int loggedInUserId)
 {
-    //CMarkup xml;
-    //bool fileExists = xml.Load("expenses.xml");
-    //xml.Load("expenses.xml");
-    //xml.SetDoc( fileNameWithUsers )
-    User user;
     CMarkup xml;
     string fileNameWithUsers=XmlFile::getFileName();
-    bool fileExists = xml.Load(fileNameWithUsers);
-
+    xml.Load(fileNameWithUsers);
     xml.ResetPos();
     xml.FindElem();
     xml.IntoElem();
-    while ( xml.FindElem("UserID")==true);
 
+    while ( xml.FindElem("User") )
     {
-        int userId = atoi(xml.GetData().c_str());//atoi( MCD_2PCSZ(xml.GetData()));
-        if ( userId == loggedInUserId )
+        xml.IntoElem();
+        xml.FindElem( "UserID" );
+        if (xml.GetData() == AuxiliaryMethods::convertIntToString(loggedInUserId))
         {
             xml.FindElem("Password");
             xml.RemoveElem();
-            xml.AddElem("Password", user.getPassword());
+            xml.AddElem("Password", newPassword);
+            xml.Save(fileNameWithUsers);
+        }
+        else
+        {
+            xml.OutOfElem();
         }
     }
-
-    xml.Save(fileNameWithUsers);
-}*/
-
+}
