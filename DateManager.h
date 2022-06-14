@@ -20,11 +20,7 @@ class DateManager
 
     string addZeroToStringDate(string date);
     string addDashToDate(string date);
-    //string createDateOfFirstDayOfMonth(int month);
-    //string createDateOfLastDayOfMonth(int month);
-
     bool isLeapYear(int year);
-
     bool isDateFormatCorrect(string date);
     bool isYearCorrect(int year);
     bool isMonthCorrect(int month, int year);
@@ -41,7 +37,6 @@ public:
     string createDateOfLastDayOfMonth(int month);
     int checkNumberOfDaysInMonth(int year, int month);
     string convertIntDateToStringDate (int year, int month, int day);
-
 };
 
 #endif

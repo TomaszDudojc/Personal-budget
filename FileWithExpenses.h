@@ -15,7 +15,6 @@ using namespace std;
 
 class FileWithExpenses : public XmlFile
 {
-
     string fileNameWithExpenses;
     int lastExpenseId;
     int loggedInUserId;
@@ -30,7 +29,6 @@ public:
     void addExpenseToFile(Transaction expense);
     vector <Transaction> getExpenseFromFile(int loggedInUserId);
     int getIdOfLastExpenseFromFile();
-    //int getLastTransactionId();
 };
 
 #endif

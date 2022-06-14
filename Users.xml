@@ -12,7 +12,7 @@
 <Name>Ola</Name>
 <Surname>Borowska</Surname>
 <Login>oldi</Login>
-<Password>ola</Password>
+<Password>777</Password>
 </User>
 <User>
 <UserID>3</UserID>
@@ -26,6 +26,13 @@
 <Name>Tom</Name>
 <Surname>Kowal</Surname>
 <Login>9</Login>
+<Password>nowe</Password>
+</User>
+<User>
+<UserID>5</UserID>
+<Name>Edek</Name>
+<Surname>555</Surname>
+<Login>edek</Login>
 <Password>nowe</Password>
 </User>
 </Users>

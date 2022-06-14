@@ -5,7 +5,8 @@ void FileWithIncomes::addIncomeToFile(Transaction income)
     CMarkup xml;
     string fileNameWithIncomes = XmlFile :: getFileName();
     bool fileExists = xml.Load(fileNameWithIncomes);
-    if (!fileExists)
+
+    if ((!fileExists)==true)
     {
         xml.SetDoc("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n");
         xml.AddElem("Incomes");
@@ -91,6 +92,7 @@ int FileWithIncomes::getIdOfLastIncomeFromFile()
     bool fileExists = xml.Load(fileNameWithIncomes);
     vector <int> idNumbersForIncome;
     int lastIncomeId, idNumberForIncome ;
+
     if (fileExists == true)
     {
         xml.ResetPos();
@@ -105,6 +107,9 @@ int FileWithIncomes::getIdOfLastIncomeFromFile()
             xml.OutOfElem();
         }
     }
-    lastIncomeId=idNumbersForIncome.back();
+
+    if (idNumbersForIncome.size()==0) lastIncomeId=0;
+    else lastIncomeId=idNumbersForIncome.back();
+
     return lastIncomeId;
 }

@@ -3,9 +3,9 @@
 void TransactionManager::addIncome()
 {
     Transaction income;
-    Transaction transaction;
 
     system("cls");
+
     cout << " >>> ADDING NEW INCOME <<<" << endl << endl;
 
     income = getNewIncomeData();
@@ -23,9 +23,9 @@ void TransactionManager::addIncome()
 void TransactionManager::addExpense()
 {
     Transaction expense;
-    Transaction transaction;
 
     system("cls");
+
     cout << " >>> ADDING NEW EXPENSE <<<" << endl << endl;
 
     expense = getNewExpenseData();
@@ -134,72 +134,6 @@ Transaction TransactionManager::getNewExpenseData()
 
     return transaction;
 }
-
-/*Transaction TransactionManager::getNewTransactionData()
-{
-    DateManager dateManager;
-    Transaction transaction;
-    string date, name;
-    float amount;
-    int id, intDate;
-    char choice;
-
-    //transaction.setupId(getNewIncomeId());//pozniej transaction.setupId(fileWithIncomes.getIdOfLastIncomeFromFile()+1);
-    transaction.setupUserId(LOGGED_IN_USER_ID);
-
-    cout << "Do you want to add transaction with current date?" <<endl;
-    cout << "If yes, please tpe 'y', if you want to chose other date, please type 'n': " << endl;
-
-    choice = AuxiliaryMethods::loadCharacter();
-
-    if (choice == 'y'||choice == 'Y')
-    {
-        date = dateManager.createCurrentDate();
-        cout<<"Current date: "<<date<<endl;
-    }
-    else if (choice == 'n'||choice == 'N')
-    {
-        do
-        {
-            cout << "Enter date in format YYYY-MM-DD: ";
-            date = AuxiliaryMethods::loadLine();
-        }
-        while (dateManager.isDateCorrect(date) == false);
-    }
-
-    transaction.setupDate(date);
-    intDate=dateManager.convertStringDateToIntDate(date);
-    transaction.setupIntDate(intDate);
-
-     transaction.setupId(fileWithIncomes.getIdOfLastIncomeFromFile()+1);
-
-    cout << "Enter transaction name: ";
-    name = AuxiliaryMethods::loadLine();
-    transaction.setupName(name);
-
-    cout << "Enter amount: ";
-    string stringAmount = AuxiliaryMethods::loadLine();
-    amount = correctAmountFormat(stringAmount);
-    transaction.setupAmount(amount);
-
-    return transaction;
-}*/
-
-/*int TransactionManager::getNewIncomeId()
-{
-    if (incomes.empty() == true)
-        return 1;
-    else
-        return incomes.back().getId() + 1;
-}*/
-
-/*int TransactionManager::getNewExpenseId()
-{
-    if (expenses.empty() == true)
-        return 1;
-    else
-        return expenses.back().getId() + 1;
-}*/
 
 void TransactionManager::displayAllIncomesSortedByDate()
 {

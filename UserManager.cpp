@@ -19,13 +19,13 @@ User UserManager::getNewUserData()
     string name;
     cout << "Enter name: ";
     cin >> name;
-    name = AuxiliaryMethods :: changeFirstLetterToCapitalAndOtherToLowercase(name);
+    name = AuxiliaryMethods :: changeFirstLetterForUpperCaseAndOthersForLowerCase(name);
     user.setupName(name);
 
     string surname;
     cout << "Enter surname: ";
     cin >> surname;
-    surname = AuxiliaryMethods :: changeFirstLetterToCapitalAndOtherToLowercase(surname);
+    surname = AuxiliaryMethods :: changeFirstLetterForUpperCaseAndOthersForLowerCase(surname);
     user.setupSurname(surname);
 
     string login;

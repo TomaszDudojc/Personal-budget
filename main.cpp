@@ -50,7 +50,6 @@ int main()
                 break;
             case '6':
                 personalBudget.changePassword();
-                //personalBudget.displayAllUsers();
                 break;
             case '7':
                 personalBudget.logoutUser();
