@@ -1,6 +1,5 @@
 #include "AuxiliaryMethods.h"
 
-
 char AuxiliaryMethods :: loadCharacter()
 {
     string enrtrance = "";
@@ -20,7 +19,7 @@ char AuxiliaryMethods :: loadCharacter()
     return character;
 }
 
-string AuxiliaryMethods::changeFirstLetterToCapitalAndOtherToLowercase(string text)
+string AuxiliaryMethods::changeFirstLetterForUpperCaseAndOthersForLowerCase(string text)
 {
     if (!text.empty())
     {
@@ -72,7 +71,7 @@ float AuxiliaryMethods::convertStringToFloat(string str)
 
     return num_float;
 }
-
+/*
 float AuxiliaryMethods::loadFloat()
 {
     string entrance = "";
@@ -90,7 +89,7 @@ float AuxiliaryMethods::loadFloat()
     }
     return number;
 }
-
+*/
 string AuxiliaryMethods::replaceCommaWithDot(string text)
 {
     for (int i=0; i<text.size(); i++)

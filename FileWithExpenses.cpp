@@ -5,6 +5,7 @@ void FileWithExpenses::addExpenseToFile(Transaction expense)
     CMarkup xml;
     string fileNameWithExpenses = XmlFile :: getFileName();
     bool fileExists = xml.Load(fileNameWithExpenses);
+
     if (!fileExists)
     {
         xml.SetDoc("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n");
@@ -54,8 +55,8 @@ vector <Transaction> FileWithExpenses::getExpenseFromFile(int loggedInUserId)
                 int id = atoi(xml.GetData().c_str());
                 transaction.setupId(id);
 
-                string date = xml.GetData();
                 xml.FindElem( "date");
+                string date = xml.GetData();
                 transaction.setupDate(date);
 
                 xml.FindElem( "intDate");
@@ -89,6 +90,7 @@ int FileWithExpenses::getIdOfLastExpenseFromFile()
     bool fileExists = xml.Load(fileNameWithExpenses);
     vector <int> idNumbersForExpense;
     int lastExpenseId, idNumberForExpense ;
+
     if (fileExists == true)
     {
         xml.ResetPos();
@@ -103,6 +105,9 @@ int FileWithExpenses::getIdOfLastExpenseFromFile()
             xml.OutOfElem();
         }
     }
-    lastExpenseId=idNumbersForExpense.back();
+
+    if (idNumbersForExpense.size()==0) lastExpenseId=0;
+    else lastExpenseId=idNumbersForExpense.back();
+
     return lastExpenseId;
 }

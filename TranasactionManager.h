@@ -29,9 +29,6 @@ class TransactionManager
 
     Transaction getNewIncomeData();
     Transaction getNewExpenseData();
-    //Transaction getNewTransactionData();
-    //int getNewIncomeId();
-    //int getNewExpenseId();
     void sortIncomesByDate();
     void sortExpensesByDate();
     float correctAmountFormat(string amount);
@@ -56,12 +53,6 @@ public:
     void displayBalanceForSelectedPeriod();
     void displayBalanceForCurrentMonth();
     void displayBalanceForPreviousMonth();
-    //void displayIncomesFromDateToDate;
-    //void displayExpensesFromDateToDate;
-    //void displayCurrentMonthIncomes;
-    //void displayCurrentMonthEkspenses;
-    //void displayPreviousMonthIncomes;
-    //void displayPreviousMonthEkspenses;
-    //void displaySelectedPeriodIncomes();
 };
+
 #endif

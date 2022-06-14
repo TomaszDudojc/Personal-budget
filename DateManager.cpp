@@ -78,7 +78,6 @@ string DateManager::createCurrentDate()
     month = getCurrentMonth();
     day = getCurrentDay();
     currentDate=convertIntDateToStringDate(year,month,day);
-    //currentDate=addDashToDate(currentDate);
 
     return currentDate;
 }
@@ -125,30 +124,11 @@ int DateManager::checkNumberOfDaysInMonth(int year, int month)
         if (isLeapYear(year)) return 29;
         else return 28;
         break;
+
     default:
         cout<<"Uncorrect number of month!";
     }
 }
-
-/*string DateManager::createDateOfFirstDayOfMonth (int month)
-{
-    int year = getCurrentYear();
-    const int firstDayOfMonth=1;
-    string dateOfFirstDayOfMonth = convertIntDateToStringDate(year, month, firstDayOfMonth);
-    dateOfFirstDayOfMonth = addDashToDate(dateOfFirstDayOfMonth);
-
-    return dateOfFirstDayOfMonth;
-}
-
-string DateManager::createDateOfLastDayOfMonth (int month)
-{
-    int year = getCurrentYear();
-    int lastDayOfMonth=checkNumberOfDaysInMonth(year, month);
-    string dateOfLastDayOfMonth = convertIntDateToStringDate(year, month, lastDayOfMonth);
-    dateOfLastDayOfMonth = addDashToDate(dateOfLastDayOfMonth);
-
-    return dateOfLastDayOfMonth;
-}*/
 
 bool DateManager::isDateCorrect(string date)
 {
