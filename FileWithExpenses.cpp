@@ -26,7 +26,7 @@ void FileWithExpenses::addExpenseToFile(Transaction expense)
     xml.Save(fileNameWithExpenses);
 }
 
-vector <Transaction> FileWithExpenses::getExpenseFromFile(int loggedInUserId)
+vector <Transaction> FileWithExpenses::loadExpensesOfLoggedInUserFromFile(int loggedInUserId)
 {
     Transaction transaction;
     vector <Transaction> expense;
@@ -43,7 +43,7 @@ vector <Transaction> FileWithExpenses::getExpenseFromFile(int loggedInUserId)
         {
             xml.IntoElem();
             xml.FindElem("userId");
-            if (xml.GetData() == AuxiliaryMethods::convertIntToString(loggedInUserId))
+            if (xml.GetData() == AuxiliaryMethods::convertIntegerToString(loggedInUserId))
 
             {
                 //xml.ResetMainPos(); when "userId" is not the first element
@@ -83,7 +83,7 @@ vector <Transaction> FileWithExpenses::getExpenseFromFile(int loggedInUserId)
     return expenses;
 }
 
-int FileWithExpenses::getIdOfLastExpenseFromFile()
+int FileWithExpenses::getLastExpenseIdFromFile()
 {
     CMarkup xml;
     string fileNameWithExpenses = XmlFile :: getFileName();

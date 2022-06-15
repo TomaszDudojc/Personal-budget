@@ -9,12 +9,12 @@ class Transaction
 {
     int userId;
     int id;
-    string date;
     string name;
+    string date;
+    int intDate;
     float amount;
 
 public:
-    int intDate;
     Transaction(int userId = 0, int id = 0, string date = "", int intDate = 0, string name = "", float amount = 0.0)
     {
         this->userId = userId;

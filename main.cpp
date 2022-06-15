@@ -15,7 +15,7 @@ int main()
         {
             choice = personalBudget.selectOptionFromMainMenu();
 
-  switch (choice)
+            switch (choice)
             {
             case '1':
                 personalBudget.registerUser();
@@ -27,7 +27,7 @@ int main()
                 exit(0);
                 break;
             }
-       }
+        }
         else
         {
             choice = personalBudget.selectOptionFromUserMenu();
@@ -62,5 +62,5 @@ int main()
         }
     }
 
-return 0;
+    return 0;
 }

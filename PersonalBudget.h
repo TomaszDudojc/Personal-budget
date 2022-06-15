@@ -4,8 +4,7 @@
 #include <iostream>
 
 #include "UserManager.h"
-#include "TranasactionManager.h"
-#include "DateManager.h"
+#include "TransactionManager.h"
 
 using namespace std;
 
@@ -22,13 +21,13 @@ public:
     {
         transactionManager = NULL;
     }
+
     ~PersonalBudget()
     {
         delete transactionManager;
         transactionManager = NULL;
     };
 
-    char selectOptionFromMainMenu();
     void registerUser();
     void displayAllUsers();
     void addUserToFile();
@@ -37,13 +36,14 @@ public:
     void changePassword();
     void logoutUser();
 
-    char selectOptionFromUserMenu();
     void addIncome();
     void addExpense();
     void displayBalanceForSelectedPeriod();
     void displayBalanceForCurrentMonth();
     void displayBalanceForPreviousMonth();
-};
 
+    char selectOptionFromMainMenu();
+    char selectOptionFromUserMenu();
+};
 
 #endif

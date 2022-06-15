@@ -5,7 +5,7 @@ void FileWithUsers::addUserToFile(User user)
     CMarkup xml;
     string fileNameWithUsers=XmlFile::getFileName();
     bool fileExists = xml.Load(fileNameWithUsers);
-     if (!fileExists)
+    if (!fileExists)
     {
         xml.SetDoc("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n");
         xml.AddElem("Users");
@@ -77,7 +77,7 @@ void FileWithUsers::addNewPasswordToFile(string newPassword, int loggedInUserId)
     {
         xml.IntoElem();
         xml.FindElem( "UserID" );
-        if (xml.GetData() == AuxiliaryMethods::convertIntToString(loggedInUserId))
+        if (xml.GetData() == AuxiliaryMethods::convertIntegerToString(loggedInUserId))
         {
             xml.FindElem("Password");
             xml.RemoveElem();

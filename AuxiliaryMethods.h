@@ -10,13 +10,12 @@ using namespace std;
 
 class AuxiliaryMethods
 {
-
 public:
     static char loadCharacter();
     static string changeFirstLetterForUpperCaseAndOthersForLowerCase(string text);
     static string loadLine();
-    static string convertIntToString(int number);
-    static int convertStringToInt(string number);
+    static string convertIntegerToString(int number);
+    static int convertStringToInteger(string number);
     static string convertFloatToString(float amount);
     //static float loadFloat();
     static float convertStringToFloat(string str);

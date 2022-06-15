@@ -1,18 +1,18 @@
 #include "Transaction.h"
 
-void Transaction::setupUserId (int newUserId)
+void Transaction::setupUserId(int newUserId)
 {
     if(newUserId>=0)
     {
-       userId=newUserId;
+        userId=newUserId;
     }
 }
 
-void Transaction::setupId (int newId)
+void Transaction::setupId(int newId)
 {
     if(newId>=0)
     {
-      id=newId;
+        id=newId;
     }
 }
 
@@ -21,14 +21,14 @@ void Transaction::setupDate (string newDate)
     date=newDate;
 }
 
-void Transaction::setupIntDate (int newIntDate)
+void Transaction::setupIntDate(int newIntDate)
 {
     intDate=newIntDate;
 }
 
 void Transaction::setupName(string newName)
 {
-   name=newName;
+    name=newName;
 }
 
 void Transaction::setupAmount(float newAmount)
@@ -62,6 +62,6 @@ string Transaction::getName()
 }
 
 float Transaction::getAmount()
- {
+{
     return amount;
 }
