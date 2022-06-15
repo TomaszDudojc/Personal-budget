@@ -3,11 +3,8 @@
 
 #include <iostream>
 #include <vector>
-#include <cstring>
-#include <string>
 
 #include "XmlFile.h"
-#include "Markup.h"
 #include "User.h"
 #include "AuxiliaryMethods.h"
 

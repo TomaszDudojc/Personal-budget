@@ -3,10 +3,7 @@
 
 #include <iostream>
 #include <vector>
-#include <fstream>
-#include <cstdlib>
 
-#include "Markup.h"
 #include "XmlFile.h"
 #include "Transaction.h"
 #include "AuxiliaryMethods.h"
@@ -26,9 +23,10 @@ public:
         loggedInUserId = 0;
         lastExpenseId = 0;
     };
+
     void addExpenseToFile(Transaction expense);
-    vector <Transaction> getExpenseFromFile(int loggedInUserId);
-    int getIdOfLastExpenseFromFile();
+    vector <Transaction> loadExpensesOfLoggedInUserFromFile(int loggedInUserId);
+    int getLastExpenseIdFromFile();
 };
 
 #endif

@@ -1,6 +1,6 @@
 #include "DateManager.h"
 
-string DateManager::addZeroToStringDate(string date)
+string DateManager::addZeroToDate(string date)
 {
     string dateWithZero;
     if (date.size()==1) dateWithZero=date.insert (0,1,'0');
@@ -10,7 +10,7 @@ string DateManager::addZeroToStringDate(string date)
 }
 
 string DateManager::addDashToDate(string date)
- {
+{
     string stringDateWithDash;
     stringDateWithDash = date.insert (4,1,'-');
     stringDateWithDash = stringDateWithDash.insert (7,1,'-');
@@ -21,13 +21,13 @@ string DateManager::addDashToDate(string date)
 string DateManager::convertIntDateToStringDate(int year, int month, int day)
 {
     //convert intDate e.g (int year=2022, int month=1, int day=15) to stringDate 2022-01-15//
-   //-------------------------------------------------------------------------------------//
+    //-------------------------------------------------------------------------------------//
     string stringYear, stringMonth, stringDay,  stringDate;
-    stringYear=AuxiliaryMethods::convertIntToString(year);
-    stringMonth=AuxiliaryMethods::convertIntToString(month);
-    stringMonth=addZeroToStringDate(stringMonth);
-    stringDay=AuxiliaryMethods::convertIntToString(day);
-    stringDay=addZeroToStringDate(stringDay);
+    stringYear=AuxiliaryMethods::convertIntegerToString(year);
+    stringMonth=AuxiliaryMethods::convertIntegerToString(month);
+    stringMonth=addZeroToDate(stringMonth);
+    stringDay=AuxiliaryMethods::convertIntegerToString(day);
+    stringDay=addZeroToDate(stringDay);
     stringDate=stringYear+stringMonth+stringDay;
     stringDate=addDashToDate(stringDate);
 
@@ -132,15 +132,22 @@ int DateManager::checkNumberOfDaysInMonth(int year, int month)
 
 bool DateManager::isDateCorrect(string date)
 {
-
-    int year = AuxiliaryMethods::convertStringToInt(date.substr(0,4));
-    int month = AuxiliaryMethods::convertStringToInt(date.substr(5,2));
-    int day = AuxiliaryMethods::convertStringToInt(date.substr(8,2));
-
-   if (isDateFormatCorrect(date)==false || isYearCorrect(year)==false || isMonthCorrect(month,year)==false  || isDayCorrect(day,month,year)==false)
+    if (date.size()!=10)
     {
         cout<<"Incorrect date! "<<endl;
         return false;
+    }
+    else
+    {
+        int year = AuxiliaryMethods::convertStringToInteger(date.substr(0,4));
+        int month = AuxiliaryMethods::convertStringToInteger(date.substr(5,2));
+        int day = AuxiliaryMethods::convertStringToInteger(date.substr(8,2));
+
+        if (isDateFormatCorrect(date)==false || isYearCorrect(year)==false || isMonthCorrect(month,year)==false  || isDayCorrect(day,month,year)==false)
+        {
+            cout<<"Incorrect date! "<<endl;
+            return false;
+        }
     }
     return true;
 }

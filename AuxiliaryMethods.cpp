@@ -36,7 +36,7 @@ string AuxiliaryMethods::loadLine()
     return enrtrance;
 }
 
-string AuxiliaryMethods::convertIntToString(int number)
+string AuxiliaryMethods::convertIntegerToString(int number)
 {
     ostringstream ss;
     ss << number;
@@ -44,7 +44,7 @@ string AuxiliaryMethods::convertIntToString(int number)
 
     return str;
 }
-int AuxiliaryMethods::convertStringToInt(string number)
+int AuxiliaryMethods::convertStringToInteger(string number)
 {
     int numberInt;
     istringstream iss(number);

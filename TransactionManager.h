@@ -1,17 +1,10 @@
-#ifndef TRANASACTIONMANAGER_H
-#define TRANASACTIONMANAGER_H
+#ifndef TRANSACTIONMANAGER_H
+#define TRANSACTIONMANAGER_H
 
-#include <iostream>
 #include <iostream>
 #include <vector>
-#include <string>
 #include <iomanip>
-//#include <math.h>
-//#include <conio.h>
 
-#include "Transaction.h"
-#include "User.h"
-#include "UserManager.h"
 #include "DateManager.h"
 #include "FileWithIncomes.h"
 #include "FileWithExpenses.h"
@@ -37,19 +30,19 @@ class TransactionManager
     float getExpensesFromDateToDate(string firstDate, string lastDate);
     void displayIncome(int i);
     void displayExpense(int i);
+    void displayAllIncomesSortedByDate();
+    void displayAllExpensesSortedByDate();
 
 public:
-
     TransactionManager (string fileNameWithIncomes, string fileNameWithExpenses, int loggedInUserId) : fileWithIncomes (fileNameWithIncomes), fileWithExpenses (fileNameWithExpenses), LOGGED_IN_USER_ID(loggedInUserId)
     {
-        incomes = fileWithIncomes.getIncomeFromFile(LOGGED_IN_USER_ID);
-        expenses = fileWithExpenses.getExpenseFromFile(LOGGED_IN_USER_ID);
+        incomes = fileWithIncomes.loadIncomesOfLoggedInUserFromFile(LOGGED_IN_USER_ID);
+        expenses = fileWithExpenses.loadExpensesOfLoggedInUserFromFile(LOGGED_IN_USER_ID);
     };
 
     void addIncome();
     void addExpense();
-    void displayAllIncomesSortedByDate();
-    void displayAllExpensesSortedByDate();
+
     void displayBalanceForSelectedPeriod();
     void displayBalanceForCurrentMonth();
     void displayBalanceForPreviousMonth();

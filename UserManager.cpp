@@ -19,13 +19,13 @@ User UserManager::getNewUserData()
     string name;
     cout << "Enter name: ";
     cin >> name;
-    name = AuxiliaryMethods :: changeFirstLetterForUpperCaseAndOthersForLowerCase(name);
+    name = AuxiliaryMethods::changeFirstLetterForUpperCaseAndOthersForLowerCase(name);
     user.setupName(name);
 
     string surname;
     cout << "Enter surname: ";
     cin >> surname;
-    surname = AuxiliaryMethods :: changeFirstLetterForUpperCaseAndOthersForLowerCase(surname);
+    surname = AuxiliaryMethods::changeFirstLetterForUpperCaseAndOthersForLowerCase(surname);
     user.setupSurname(surname);
 
     string login;
@@ -61,7 +61,8 @@ void UserManager::displayAllUsers()
         cout<<"|Name: "<<users[i].getName();
         cout<<"|Surname: "<<users[i].getSurname();
         cout<<"|Login: "<<users[i].getLogin();
-        cout<<"|Password: "<<users[i].getPassword()<<endl;system("pause");//potem usun¹æ system pauze!!!!!!
+        cout<<"|Password: "<<users[i].getPassword()<<endl;
+        system("pause");//potem usun¹æ system pauze!!!!!!
     }
 }
 bool UserManager::loginExists(string login)
@@ -75,7 +76,6 @@ bool UserManager::loginExists(string login)
             return true;
         }
     }
-
     return false;
 }
 
@@ -107,6 +107,7 @@ int UserManager::loginUser()
             }
             cout << "Wrong password entered 3 times." << endl;
             system("pause");
+
             return 0;
         }
         itr++;

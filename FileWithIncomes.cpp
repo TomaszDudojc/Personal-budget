@@ -26,7 +26,7 @@ void FileWithIncomes::addIncomeToFile(Transaction income)
     xml.Save(fileNameWithIncomes);
 }
 
-vector <Transaction> FileWithIncomes::getIncomeFromFile(int loggedInUserId)
+vector <Transaction> FileWithIncomes::loadIncomesOfLoggedInUserFromFile(int loggedInUserId)
 {
     Transaction transaction;
     vector <Transaction> incomes;
@@ -43,7 +43,7 @@ vector <Transaction> FileWithIncomes::getIncomeFromFile(int loggedInUserId)
         {
             xml.IntoElem();
             xml.FindElem("userId");
-            if (xml.GetData() == AuxiliaryMethods::convertIntToString(loggedInUserId))
+            if (xml.GetData() == AuxiliaryMethods::convertIntegerToString(loggedInUserId))
 
             {
                 //xml.ResetMainPos(); when "userId" is not the first element
@@ -85,7 +85,7 @@ vector <Transaction> FileWithIncomes::getIncomeFromFile(int loggedInUserId)
     return incomes;
 }
 
-int FileWithIncomes::getIdOfLastIncomeFromFile()
+int FileWithIncomes::getLastIncomeIdFromFile()
 {
     CMarkup xml;
     string fileNameWithIncomes = XmlFile :: getFileName();

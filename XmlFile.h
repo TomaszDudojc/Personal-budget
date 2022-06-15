@@ -2,8 +2,9 @@
 #define XMLFILE_H
 
 #include <iostream>
-#include <fstream>
-#include <cstdlib>
+//#include <fstream>
+//#include <cstdlib>
+#include "Markup.h"
 
 using namespace std;
 

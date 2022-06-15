@@ -22,10 +22,10 @@ void PersonalBudget::registerUser()
     userManager.registerUser();
 }
 
- void PersonalBudget::displayAllUsers()
- {
+void PersonalBudget::displayAllUsers()
+{
     userManager.displayAllUsers();
- }
+}
 
 int PersonalBudget::loginUser()
 {

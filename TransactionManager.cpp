@@ -1,4 +1,4 @@
-#include "TranasactionManager.h"
+#include "TransactionManager.h"
 
 void TransactionManager::addIncome()
 {
@@ -12,10 +12,8 @@ void TransactionManager::addIncome()
     incomes.push_back(income);
 
     fileWithIncomes.addIncomeToFile(income);
-    //if(fileWithIncomes.addIncomeToFile(income))
     cout << "Income added to the file" << endl;
-    //else
-    //cout << "Error, failed to add income to the file" << endl;
+
     displayAllIncomesSortedByDate();
     system("pause");
 }
@@ -30,11 +28,10 @@ void TransactionManager::addExpense()
 
     expense = getNewExpenseData();
     expenses.push_back(expense);
+
     fileWithExpenses.addExpenseToFile(expense);
-    //if(fileWithIncomes.addIncomeToFile(expense))
     cout << "Expense added to the file" << endl;
-    //else
-    //cout << "Error, failed to add expense to the file" << endl;
+
     displayAllExpensesSortedByDate();
     system("pause");
 }
@@ -48,7 +45,7 @@ Transaction TransactionManager::getNewIncomeData()
     int id, intDate;
     char choice;
 
-    transaction.setupId(fileWithIncomes.getIdOfLastIncomeFromFile()+1);
+    transaction.setupId(fileWithIncomes.getLastIncomeIdFromFile()+1);
     transaction.setupUserId(LOGGED_IN_USER_ID);
 
     cout << "Do you want to add income with current date?" <<endl;
@@ -96,7 +93,7 @@ Transaction TransactionManager::getNewExpenseData()
     int id, intDate;
     char choice;
 
-    transaction.setupId(fileWithExpenses.getIdOfLastExpenseFromFile()+1);
+    transaction.setupId(fileWithExpenses.getLastExpenseIdFromFile()+1);
     transaction.setupUserId(LOGGED_IN_USER_ID);
 
     cout << "Do you want to add expense with current date?" <<endl;
@@ -165,23 +162,29 @@ void TransactionManager::displayAllExpensesSortedByDate()
 
 void TransactionManager::displayIncome(int i)
 {
-   cout<<"date: "<<incomes[i].getDate()<<"| id: "<<incomes[i].getId()<<".| user id: "<<incomes[i].getUserId()<<".| name: "<<incomes[i].getName()<<"| amount: "<<incomes[i].getAmount()<<fixed<<setprecision(2)<<endl;
+    cout<<"date: "<<incomes[i].getDate()<<"| id: "<<incomes[i].getId()<<".| user id: "<<incomes[i].getUserId()<<".| name: "<<incomes[i].getName()<<"| amount: "<<incomes[i].getAmount()<<fixed<<setprecision(2)<<endl;
 
 }
 
 void TransactionManager::displayExpense(int i)
 {
-   cout<<"date: "<<expenses[i].getDate()<<"| id: "<<expenses[i].getId()<<".| user id: "<<expenses[i].getUserId()<<".| name: "<<expenses[i].getName()<<"| amount: "<<expenses[i].getAmount()<<fixed<<setprecision(2)<<endl;
+    cout<<"date: "<<expenses[i].getDate()<<"| id: "<<expenses[i].getId()<<".| user id: "<<expenses[i].getUserId()<<".| name: "<<expenses[i].getName()<<"| amount: "<<expenses[i].getAmount()<<fixed<<setprecision(2)<<endl;
 }
 
 void TransactionManager::sortIncomesByDate()
 {
-    std::sort(incomes.begin(), incomes.end(), [](auto && l, auto && r) { return l.getIntDate() < r.getIntDate(); });
+    std::sort(incomes.begin(), incomes.end(), [](auto && l, auto && r)
+    {
+        return l.getIntDate() < r.getIntDate();
+    });
 }
 
 void TransactionManager::sortExpensesByDate()
 {
-    std::sort(expenses.begin(), expenses.end(), [](auto && l, auto && r) { return l.getIntDate() < r.getIntDate(); });
+    std::sort(expenses.begin(), expenses.end(), [](auto && l, auto && r)
+    {
+        return l.getIntDate() < r.getIntDate();
+    });
 }
 
 float TransactionManager::correctAmountFormat(string stringAmount)
@@ -238,8 +241,8 @@ float TransactionManager::getIncomesFromDateToDate(string firstDate, string last
     DateManager dateManager;
     float totalIncomesAmount=0.00;
 
-     int intFirstDate=dateManager.convertStringDateToIntDate(firstDate);
-     int intLastDate=dateManager.convertStringDateToIntDate(lastDate);
+    int intFirstDate=dateManager.convertStringDateToIntDate(firstDate);
+    int intLastDate=dateManager.convertStringDateToIntDate(lastDate);
 
     if (intFirstDate<=intLastDate)
     {
@@ -299,10 +302,6 @@ void TransactionManager::displayBalanceForCurrentMonth()
     string dateOfFirstDayOfMonth = dateManager.convertIntDateToStringDate(year, month, firstDayOfMonth);
     string dateOfLastDayOfMonth = dateManager.convertIntDateToStringDate (year, month, lastDayOfMonth);
 
-    /*month=dateManager.getCurrentMonth();
-    string dateOfFirstDayOfMonth = dateManager.createDateOfFirstDayOfMonth(month);
-    string dateOfLastDayOfMonth = dateManager.createDateOfLastDayOfMonth(month);*/
-
     displayBalanceFromDateToDate(dateOfFirstDayOfMonth, dateOfLastDayOfMonth);
 }
 
@@ -314,17 +313,17 @@ void TransactionManager::displayBalanceForPreviousMonth()
 
     if (dateManager.getCurrentMonth()==1)
     {
-       year = dateManager.getCurrentYear()-1;
-       month = 12;
+        year = dateManager.getCurrentYear()-1;
+        month = 12;
     }
     else
     {
-       year = dateManager.getCurrentYear();
-       month = dateManager.getCurrentMonth()-1;
+        year = dateManager.getCurrentYear();
+        month = dateManager.getCurrentMonth()-1;
     }
 
     const int firstDayOfMonth = 1;
-   int lastDayOfMonth = dateManager.checkNumberOfDaysInMonth(year, month);
+    int lastDayOfMonth = dateManager.checkNumberOfDaysInMonth(year, month);
 
     string dateOfFirstDayOfMonth = dateManager.convertIntDateToStringDate(year, month, firstDayOfMonth);
     string dateOfLastDayOfMonth = dateManager.convertIntDateToStringDate (year, month, lastDayOfMonth);

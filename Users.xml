@@ -35,5 +35,12 @@
 <Login>edek</Login>
 <Password>nowe</Password>
 </User>
+<User>
+<UserID>6</UserID>
+<Name>Andy</Name>
+<Surname>Banach</Surname>
+<Login>andy</Login>
+<Password>nowiutkie</Password>
+</User>
 </Users>
 
